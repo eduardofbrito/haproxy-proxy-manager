@@ -147,7 +147,7 @@
 		"defaultMessage": "Bu bölüm Certbot ve DNS eklentileri hakkında bazı bilgiler gerektirir. Lütfen ilgili eklenti dokümantasyonuna bakın."
 	},
 	"certificates.http.reachability-404": {
-		"defaultMessage": "Bu alan adında bir sunucu bulundu ancak Nginx Proxy Manager gibi görünmüyor. Lütfen alan adınızın NPM örneğinizin çalıştığı IP'ye işaret ettiğinden emin olun."
+		"defaultMessage": "Bu alan adında bir sunucu bulundu ancak HAProxy Proxy Manager gibi görünmüyor. Lütfen alan adınızın NPM örneğinizin çalıştığı IP'ye işaret ettiğinden emin olun."
 	},
 	"certificates.http.reachability-failed-to-check": {
 		"defaultMessage": "site24x7.com ile iletişim hatası nedeniyle erişilebilirlik kontrolü başarısız oldu."
@@ -389,11 +389,11 @@
 	"login.title": {
 		"defaultMessage": "Hesabınıza giriş yapın"
 	},
-	"nginx-config.label": {
-		"defaultMessage": "Özel Nginx Yapılandırması"
+	"haproxy-config.label": {
+		"defaultMessage": "Özel HAProxy Yapılandırması"
 	},
-	"nginx-config.placeholder": {
-		"defaultMessage": "# Kendi riskinizle özel Nginx yapılandırmanızı buraya girin!"
+	"haproxy-config.placeholder": {
+		"defaultMessage": "# Kendi riskinizle özel HAProxy yapılandırmanızı buraya girin!"
 	},
 	"no-permission-error": {
 		"defaultMessage": "Bunu görüntüleme erişiminiz yok."
@@ -579,7 +579,7 @@
 		"defaultMessage": "Tebrikler Sayfası"
 	},
 	"settings.default-site.description": {
-		"defaultMessage": "Nginx bilinmeyen bir Host ile karşılaştığında ne gösterilecek"
+		"defaultMessage": "HAProxy bilinmeyen bir Host ile karşılaştığında ne gösterilecek"
 	},
 	"settings.default-site.html": {
 		"defaultMessage": "Özel HTML"

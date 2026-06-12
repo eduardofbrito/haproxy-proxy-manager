@@ -3,7 +3,7 @@
 layout: home
 
 hero:
-  name: "Nginx Proxy Manager"
+  name: "HAProxy Proxy Manager"
   tagline: Expose your services easily and securely
   image:
     src: /logo.svg
@@ -14,7 +14,7 @@ hero:
       link: /guide/
     - theme: alt
       text: GitHub
-      link: https://github.com/NginxProxyManager/nginx-proxy-manager
+      link: https://github.com/HAProxyProxyManager/haproxy-proxy-manager
 
 features:
   - title: Get Connected
@@ -24,9 +24,9 @@ features:
   - title: Beautiful UI
     details: Based on Tabler, the interface is a pleasure to use. Configuring a server has never been so fun.
   - title: Free SSL
-    details: Built in Let’s Encrypt support allows you to secure your Web services at no cost to you. The certificates even renew themselves!
+    details: Built in Let's Encrypt support allows you to secure your Web services at no cost to you. The certificates even renew themselves!
   - title: Docker FTW
-    details: Built as a Docker Image, Nginx Proxy Manager only requires a database.
+    details: Built as a Docker Image, HAProxy Proxy Manager only requires a database.
   - title: Multiple Users
     details: Configure other users to either view or manage their own hosts. Full access permissions are available.
 ---

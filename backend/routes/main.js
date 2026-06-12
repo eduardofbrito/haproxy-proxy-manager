@@ -6,12 +6,12 @@ import pjson from "../package.json" with { type: "json" };
 import { isSetup } from "../setup.js";
 import auditLogRoutes from "./audit-log.js";
 import ciRoutes from "./ci.js";
-import accessListsRoutes from "./nginx/access_lists.js";
-import certificatesHostsRoutes from "./nginx/certificates.js";
-import deadHostsRoutes from "./nginx/dead_hosts.js";
-import proxyHostsRoutes from "./nginx/proxy_hosts.js";
-import redirectionHostsRoutes from "./nginx/redirection_hosts.js";
-import streamsRoutes from "./nginx/streams.js";
+import accessListsRoutes from "./haproxy/access_lists.js";
+import certificatesHostsRoutes from "./haproxy/certificates.js";
+import deadHostsRoutes from "./haproxy/dead_hosts.js";
+import proxyHostsRoutes from "./haproxy/proxy_hosts.js";
+import redirectionHostsRoutes from "./haproxy/redirection_hosts.js";
+import streamsRoutes from "./haproxy/streams.js";
 import reportsRoutes from "./reports.js";
 import schemaRoutes from "./schema.js";
 import settingsRoutes from "./settings.js";
@@ -53,12 +53,12 @@ router.use("/audit-log", auditLogRoutes);
 router.use("/reports", reportsRoutes);
 router.use("/settings", settingsRoutes);
 router.use("/version", versionRoutes);
-router.use("/nginx/proxy-hosts", proxyHostsRoutes);
-router.use("/nginx/redirection-hosts", redirectionHostsRoutes);
-router.use("/nginx/dead-hosts", deadHostsRoutes);
-router.use("/nginx/streams", streamsRoutes);
-router.use("/nginx/access-lists", accessListsRoutes);
-router.use("/nginx/certificates", certificatesHostsRoutes);
+router.use("/haproxy/proxy-hosts", proxyHostsRoutes);
+router.use("/haproxy/redirection-hosts", redirectionHostsRoutes);
+router.use("/haproxy/dead-hosts", deadHostsRoutes);
+router.use("/haproxy/streams", streamsRoutes);
+router.use("/haproxy/access-lists", accessListsRoutes);
+router.use("/haproxy/certificates", certificatesHostsRoutes);
 
 // Only include CI routes if we're in a CI environment
 if (isCI()) {

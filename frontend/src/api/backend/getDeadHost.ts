@@ -4,7 +4,7 @@ import type { DeadHost } from "./models";
 
 export async function getDeadHost(id: number, expand?: HostExpansion[], params = {}): Promise<DeadHost> {
 	return await api.get({
-		url: `/nginx/dead-hosts/${id}`,
+		url: `/haproxy/dead-hosts/${id}`,
 		params: {
 			expand: expand?.join(","),
 			...params,

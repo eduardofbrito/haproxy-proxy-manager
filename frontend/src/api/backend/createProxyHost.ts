@@ -3,7 +3,7 @@ import type { ProxyHost } from "./models";
 
 export async function createProxyHost(item: ProxyHost): Promise<ProxyHost> {
 	return await api.post({
-		url: "/nginx/proxy-hosts",
+		url: "/haproxy/proxy-hosts",
 		data: item,
 	});
 }

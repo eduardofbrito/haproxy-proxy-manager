@@ -11,7 +11,7 @@ Create a `docker-compose.yml` file:
 ```yml
 services:
   app:
-    image: 'jc21/nginx-proxy-manager:{{VERSION}}'
+    image: 'jc21/haproxy-proxy-manager:{{VERSION}}'
     restart: unless-stopped
 
     ports:
@@ -55,7 +55,7 @@ Here is an example of what your `docker-compose.yml` will look like when using a
 ```yml
 services:
   app:
-    image: 'jc21/nginx-proxy-manager:{{VERSION}}'
+    image: 'jc21/haproxy-proxy-manager:{{VERSION}}'
     restart: unless-stopped
     ports:
       # These ports are in format <host-port>:<container-port>
@@ -118,7 +118,7 @@ Similar to the MySQL server setup:
 ```yml
 services:
   app:
-    image: 'jc21/nginx-proxy-manager:{{VERSION}}'
+    image: 'jc21/haproxy-proxy-manager:{{VERSION}}'
     restart: unless-stopped
     ports:
       # These ports are in format <host-port>:<container-port>
@@ -173,9 +173,9 @@ use the `2.13.7` image tag if this applies to you.
 The docker images are a manifest of all the architecture docker builds supported, so this means
 you don't have to worry about doing anything special and you can follow the common instructions above.
 
-Check out the [dockerhub tags](https://hub.docker.com/r/jc21/nginx-proxy-manager/tags)
+Check out the [dockerhub tags](https://hub.docker.com/r/jc21/haproxy-proxy-manager/tags)
 for a list of supported architectures and if you want one that doesn't exist,
-[create a feature request](https://github.com/NginxProxyManager/nginx-proxy-manager/issues/new?assignees=&labels=enhancement&template=feature_request.md&title=).
+[create a feature request](https://github.com/HAProxyProxyManager/haproxy-proxy-manager/issues/new?assignees=&labels=enhancement&template=feature_request.md&title=).
 
 Also, if you don't know how to already, follow [this guide to install docker and docker-compose](https://manre-universe.net/how-to-run-docker-and-docker-compose-on-raspbian/)
 on Raspbian.

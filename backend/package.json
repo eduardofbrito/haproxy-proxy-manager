@@ -1,7 +1,7 @@
 {
-	"name": "nginx-proxy-manager",
+	"name": "haproxy-proxy-manager",
 	"version": "2.0.0",
-	"description": "A beautiful interface for creating Nginx endpoints",
+	"description": "A beautiful interface for creating HAProxy endpoints",
 	"author": "Jamie Curnow <jc@jc21.com>",
 	"license": "MIT",
 	"main": "index.js",

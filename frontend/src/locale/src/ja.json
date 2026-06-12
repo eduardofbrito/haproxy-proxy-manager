@@ -132,7 +132,7 @@
 		"defaultMessage": "このセクションはCertbotとそのDNSプラグインの知識が必要です。各プラグインのドキュメントを参照してください。"
 	},
 	"certificates.http.reachability-404": {
-		"defaultMessage": "このドメインはNginx Proxy Managerではないサーバーを指しているようです。ドメインがこのNPMインスタンスを指していることを確認してください。"
+		"defaultMessage": "このドメインはHAProxy Proxy Managerではないサーバーを指しているようです。ドメインがこのNPMインスタンスを指していることを確認してください。"
 	},
 	"certificates.http.reachability-failed-to-check": {
 		"defaultMessage": "site24x7.comへの接続でエラーが発生し、到達性チェックに失敗しました"
@@ -386,11 +386,11 @@
 	"login.title": {
 		"defaultMessage": "アカウントにログイン"
 	},
-	"nginx-config.label": {
-		"defaultMessage": "カスタムNginx設定"
+	"haproxy-config.label": {
+		"defaultMessage": "カスタムHAProxy設定"
 	},
-	"nginx-config.placeholder": {
-		"defaultMessage": "# Enter your custom Nginx configuration here at your own risk!"
+	"haproxy-config.placeholder": {
+		"defaultMessage": "# Enter your custom HAProxy configuration here at your own risk!"
 	},
 	"no-permission-error": {
 		"defaultMessage": "これを表示する権限がありません"
@@ -555,7 +555,7 @@
 		"defaultMessage": "設定ページ"
 	},
 	"settings.default-site.description": {
-		"defaultMessage": "不明なホストを要求されたときにNginxが何を返すかを設定します"
+		"defaultMessage": "不明なホストを要求されたときにHAProxyが何を返すかを設定します"
 	},
 	"settings.default-site.html": {
 		"defaultMessage": "カスタムHTML"

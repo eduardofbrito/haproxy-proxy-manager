@@ -44,25 +44,25 @@ const menuItems: MenuItem[] = [
 		label: "hosts",
 		items: [
 			{
-				to: "/nginx/proxy",
+				to: "/haproxy/proxy",
 				label: "proxy-hosts",
 				permissionSection: PROXY_HOSTS,
 				permission: VIEW,
 			},
 			{
-				to: "/nginx/redirection",
+				to: "/haproxy/redirection",
 				label: "redirection-hosts",
 				permissionSection: REDIRECTION_HOSTS,
 				permission: VIEW,
 			},
 			{
-				to: "/nginx/stream",
+				to: "/haproxy/stream",
 				label: "streams",
 				permissionSection: STREAMS,
 				permission: VIEW,
 			},
 			{
-				to: "/nginx/404",
+				to: "/haproxy/404",
 				label: "dead-hosts",
 				permissionSection: DEAD_HOSTS,
 				permission: VIEW,

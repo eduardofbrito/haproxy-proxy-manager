@@ -10,16 +10,16 @@ Older versions are not actively maintained.
 | 2.15.x (latest) | :white_check_mark: |
 | < 2.15.0 | :x: |
 
-Docker images: `jc21/nginx-proxy-manager:latest`, `jc21/nginx-proxy-manager:2`
+Docker images: `jc21/haproxy-proxy-manager:latest`, `jc21/haproxy-proxy-manager:2`
 
-See all releases: https://github.com/NginxProxyManager/nginx-proxy-manager/releases
+See all releases: https://github.com/HAProxyProxyManager/haproxy-proxy-manager/releases
 
 ## Reporting a Vulnerability
 
 **Do NOT open a public GitHub Issue to report a security vulnerability.**
 
 Use GitHub's private vulnerability reporting:
-https://github.com/NginxProxyManager/nginx-proxy-manager/security/advisories/new
+https://github.com/HAProxyProxyManager/haproxy-proxy-manager/security/advisories/new
 
 Please include:
 - Affected version (Docker image tag or release)

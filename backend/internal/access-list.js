@@ -9,7 +9,7 @@ import accessListAuthModel from "../models/access_list_auth.js";
 import accessListClientModel from "../models/access_list_client.js";
 import proxyHostModel from "../models/proxy_host.js";
 import internalAuditLog from "./audit-log.js";
-import internalNginx from "./nginx.js";
+import internalHaproxy from "./haproxy.js";
 
 const omissions = () => {
 	return ["is_deleted"];
@@ -74,7 +74,7 @@ const internalAccessList = {
 		await internalAccessList.build(freshRow);
 
 		if (Number.parseInt(freshRow.proxy_host_count, 10)) {
-			await internalNginx.bulkGenerateConfigs("proxy_host", freshRow.proxy_hosts);
+			await internalHaproxy.bulkGenerateConfigs("proxy_host", freshRow.proxy_hosts);
 		}
 
 		// Add to audit log
@@ -185,9 +185,9 @@ const internalAccessList = {
 
 		await internalAccessList.build(freshRow)
 		if (Number.parseInt(freshRow.proxy_host_count, 10)) {
-			await internalNginx.bulkGenerateConfigs("proxy_host", freshRow.proxy_hosts);
+			await internalHaproxy.bulkGenerateConfigs("proxy_host", freshRow.proxy_hosts);
 		}
-		await internalNginx.reload();
+		await internalHaproxy.reload();
 		return internalAccessList.maskItems(freshRow);
 	},
 
@@ -281,17 +281,17 @@ const internalAccessList = {
 				.where("access_list_id", "=", row.id)
 				.patch({ access_list_id: 0 });
 
-			// 3. reconfigure those hosts, then reload nginx
+			// 3. reconfigure those hosts, then reload haproxy
 			// set the access_list_id to zero for these items
 			row.proxy_hosts.map((_val, idx) => {
 				row.proxy_hosts[idx].access_list_id = 0;
 				return true;
 			});
 
-			await internalNginx.bulkGenerateConfigs("proxy_host", row.proxy_hosts);
+			await internalHaproxy.bulkGenerateConfigs("proxy_host", row.proxy_hosts);
 		}
 
-		await internalNginx.reload();
+		await internalHaproxy.reload();
 
 		// delete the htpasswd file
 		try {

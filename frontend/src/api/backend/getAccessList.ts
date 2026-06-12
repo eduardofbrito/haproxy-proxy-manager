@@ -4,7 +4,7 @@ import type { AccessList } from "./models";
 
 export async function getAccessList(id: number, expand?: AccessListExpansion[], params = {}): Promise<AccessList> {
 	return await api.get({
-		url: `/nginx/access-lists/${id}`,
+		url: `/haproxy/access-lists/${id}`,
 		params: {
 			expand: expand?.join(","),
 			...params,

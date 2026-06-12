@@ -3,7 +3,7 @@ import type { Certificate } from "./models";
 
 export async function createCertificate(item: Certificate): Promise<Certificate> {
 	return await api.post({
-		url: "/nginx/certificates",
+		url: "/haproxy/certificates",
 		data: item,
 	});
 }

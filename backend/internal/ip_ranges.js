@@ -6,7 +6,7 @@ import { ProxyAgent } from "proxy-agent";
 import errs from "../lib/error.js";
 import utils from "../lib/utils.js";
 import { ipRanges as logger } from "../logger.js";
-import internalNginx from "./nginx.js";
+import internalHaproxy from "./haproxy.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -52,7 +52,7 @@ const internalIpRanges = {
 	},
 
 	/**
-	 * Triggered at startup and then later by a timer, this will fetch the ip ranges from services and apply them to nginx.
+	 * Triggered at startup and then later by a timer, this will fetch the ip ranges from services and apply them to haproxy.
 	 */
 	fetch: () => {
 		if (!internalIpRanges.interval_processing) {
@@ -109,8 +109,8 @@ const internalIpRanges = {
 
 					return internalIpRanges.generateConfig(clean_ip_ranges).then(() => {
 						if (internalIpRanges.iteration_count) {
-							// Reload nginx
-							return internalNginx.reload();
+							// Reload HAProxy
+							return internalHaproxy.reload();
 						}
 					});
 				})
@@ -133,9 +133,9 @@ const internalIpRanges = {
 		const renderEngine = utils.getRenderEngine();
 		return new Promise((resolve, reject) => {
 			let template = null;
-			const filename = "/etc/nginx/conf.d/include/ip_ranges.conf";
+			const filename = "/data/haproxy/include/ip_ranges.cfg";
 			try {
-				template = fs.readFileSync(`${__dirname}/../templates/ip_ranges.conf`, { encoding: "utf8" });
+				template = fs.readFileSync(`${__dirname}/../templates/ip_ranges.cfg`, { encoding: "utf8" });
 			} catch (err) {
 				reject(new errs.ConfigurationError(err.message));
 				return;

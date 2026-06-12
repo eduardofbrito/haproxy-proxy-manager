@@ -1,21 +1,21 @@
 <p align="center">
-	<img src="https://nginxproxymanager.com/github.png">
+	<img src="https://haproxyproxymanager.com/github.png">
 	<br><br>
 	<img src="https://img.shields.io/badge/version-2.15.1-green.svg?style=for-the-badge">
-	<a href="https://hub.docker.com/repository/docker/jc21/nginx-proxy-manager">
-		<img src="https://img.shields.io/docker/stars/jc21/nginx-proxy-manager.svg?style=for-the-badge">
+	<a href="https://hub.docker.com/repository/docker/jc21/haproxy-proxy-manager">
+		<img src="https://img.shields.io/docker/stars/jc21/haproxy-proxy-manager.svg?style=for-the-badge">
 	</a>
-	<a href="https://hub.docker.com/repository/docker/jc21/nginx-proxy-manager">
-		<img src="https://img.shields.io/docker/pulls/jc21/nginx-proxy-manager.svg?style=for-the-badge">
+	<a href="https://hub.docker.com/repository/docker/jc21/haproxy-proxy-manager">
+		<img src="https://img.shields.io/docker/pulls/jc21/haproxy-proxy-manager.svg?style=for-the-badge">
 	</a>
 </p>
 
 This project comes as a pre-built Docker image that enables you to easily forward to your websites
-running at home or otherwise, including free SSL, without having to know too much about Nginx or Letsencrypt.
+running at home or otherwise, including free SSL, without having to know too much about HAProxy or Letsencrypt.
 
 - [Quick Setup](#quick-setup)
-- [Full Setup](https://nginxproxymanager.com/setup/)
-- [Screenshots](https://nginxproxymanager.com/screenshots/)
+- [Full Setup](https://haproxyproxymanager.com/setup/)
+- [Screenshots](https://haproxyproxymanager.com/screenshots/)
 
 ## Project Goal
 
@@ -30,10 +30,10 @@ so that the barrier to entry here is low.
 ## Features
 
 - Beautiful and Secure Admin Interface based on [Tabler](https://tabler.github.io/)
-- Easily create forwarding domains, redirections, streams, and 404 hosts without knowing anything about Nginx
+- Easily create forwarding domains, redirections, streams, and 404 hosts without knowing anything about HAProxy
 - Free SSL using Let's Encrypt or provide your own custom SSL certificates
 - Access Lists and basic HTTP Authentication for your hosts
-- Advanced Nginx configuration available for super users
+- Advanced HAProxy configuration available for super users
 - User management, permissions, and audit log
 
 ::: warning
@@ -51,7 +51,7 @@ I won't go into too much detail here, but here are the basics for someone new to
    - DuckDNS
    - [Amazon Route53](https://github.com/jc21/route53-ddns)
    - [Cloudflare](https://github.com/jc21/cloudflare-ddns)
-4. Use the Nginx Proxy Manager as your gateway to forward to your other web-based services
+4. Use the HAProxy Proxy Manager as your gateway to forward to your other web-based services
 
 ## Quick Setup
 
@@ -61,7 +61,7 @@ I won't go into too much detail here, but here are the basics for someone new to
 ```yml
 services:
   app:
-    image: 'docker.io/jc21/nginx-proxy-manager:latest'
+    image: 'docker.io/jc21/haproxy-proxy-manager:latest'
     restart: unless-stopped
     ports:
       - '80:80'
@@ -72,7 +72,7 @@ services:
       - ./letsencrypt:/etc/letsencrypt
 ```
 
-This is the bare minimum configuration required. See the [documentation](https://nginxproxymanager.com/setup/) for more.
+This is the bare minimum configuration required. See the [documentation](https://haproxyproxymanager.com/setup/) for more.
 
 3. Bring up your stack by running
 
@@ -96,16 +96,16 @@ CI is used in this project. All PR's must pass before being considered. After pa
 docker builds for PR's are available on dockerhub for manual verifications.
 
 Documentation within the `develop` branch is available for preview at
-[https://develop.nginxproxymanager.com](https://develop.nginxproxymanager.com)
+[https://develop.haproxyproxymanager.com](https://develop.haproxyproxymanager.com)
 
 
 ### Contributors
 
-Special thanks to [all of our contributors](https://github.com/NginxProxyManager/nginx-proxy-manager/graphs/contributors).
+Special thanks to [all of our contributors](https://github.com/HAProxyProxyManager/haproxy-proxy-manager/graphs/contributors).
 
 
 ## Getting Support
 
-1. [Found a bug?](https://github.com/NginxProxyManager/nginx-proxy-manager/issues)
-2. [Discussions](https://github.com/NginxProxyManager/nginx-proxy-manager/discussions)
-3. [Reddit](https://reddit.com/r/nginxproxymanager)
+1. [Found a bug?](https://github.com/HAProxyProxyManager/haproxy-proxy-manager/issues)
+2. [Discussions](https://github.com/HAProxyProxyManager/haproxy-proxy-manager/discussions)
+3. [Reddit](https://reddit.com/r/haproxyproxymanager)

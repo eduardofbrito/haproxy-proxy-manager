@@ -147,7 +147,7 @@
 		"defaultMessage": "이 기능을 사용하려면 Certbot과 DNS 플러그인에 대한 기본적인 이해가 필요합니다. 자세한 내용은 관련 문서를 참고해 주세요."
 	},
 	"certificates.http.reachability-404": {
-		"defaultMessage": "해당 도메인에서 서버가 탐지되었지만 Nginx Proxy Manager가 아닌 것으로 보입니다. 도메인이 NPM이 실행 중인 IP를 가리키는지 확인하세요."
+		"defaultMessage": "해당 도메인에서 서버가 탐지되었지만 HAProxy Proxy Manager가 아닌 것으로 보입니다. 도메인이 NPM이 실행 중인 IP를 가리키는지 확인하세요."
 	},
 	"certificates.http.reachability-failed-to-check": {
 		"defaultMessage": "site24x7.com과의 통신 오류로 인해 도달 가능 여부를 확인할 수 없습니다."
@@ -401,11 +401,11 @@
 	"login.title": {
 		"defaultMessage": "로그인"
 	},
-	"nginx-config.label": {
-		"defaultMessage": "사용자 지정 Nginx 설정"
+	"haproxy-config.label": {
+		"defaultMessage": "사용자 지정 HAProxy 설정"
 	},
-	"nginx-config.placeholder": {
-		"defaultMessage": "# 위험을 감수하고 여기에 사용자 지정 Nginx 설정을 입력하세요!"
+	"haproxy-config.placeholder": {
+		"defaultMessage": "# 위험을 감수하고 여기에 사용자 지정 HAProxy 설정을 입력하세요!"
 	},
 	"no-permission-error": {
 		"defaultMessage": "이 내용을 볼 권한이 없습니다."

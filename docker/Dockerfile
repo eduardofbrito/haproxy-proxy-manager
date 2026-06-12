@@ -1,10 +1,10 @@
 # This is a Dockerfile intended to be built using `docker buildx`
 # for multi-arch support. Building with `docker build` may have unexpected results.
-
+#
 # This file assumes that the frontend has been built using ./scripts/frontend-build
 
-ARG BASE_IMAGE=nginxproxymanager/nginx-full:certbot-node
-FROM nginxproxymanager/testca AS testca
+ARG BASE_IMAGE=haproxy:3.0-alpine
+FROM haproxy/testca AS testca
 FROM $BASE_IMAGE
 
 ARG TARGETPLATFORM
@@ -25,11 +25,9 @@ ENV SUPPRESS_NO_CONFIG_WARNING=1 \
 	NPM_BUILD_DATE="${BUILD_DATE}" \
 	NODE_OPTIONS="--openssl-legacy-provider"
 
-RUN echo "fs.file-max = 65535" > /etc/sysctl.conf \
-	&& apt-get update \
-	&& apt-get install -y --no-install-recommends jq logrotate \
-	&& apt-get clean \
-	&& rm -rf /var/lib/apt/lists/*
+RUN apk add --no-cache \
+	bash curl ca-certificates jq logrotate \
+	&& echo "fs.file-max = 65535" > /etc/sysctl.conf
 
 # s6 overlay
 COPY docker/scripts/install-s6 /tmp/install-s6
@@ -42,25 +40,26 @@ COPY frontend/dist /app/frontend
 COPY docker/rootfs /
 
 # Copy test CA cert for use in container and add to trusted certs from a self-signed CA
-COPY --from=testca /home/step/certs/root_ca.crt /etc/ssl/certs/NginxProxyManager.crt
+COPY --from=testca /home/step/certs/root_ca.crt /etc/ssl/certs/HaproxyProxyManager.crt
 WORKDIR /etc/ssl/certs
-RUN ln -s NginxProxyManager.crt 1d0e3f10.0 && update-ca-certificates
+RUN ln -s HaproxyProxyManager.crt 1d0e3f10.0 && update-ca-certificates
 
 WORKDIR /app
-RUN yarn install \
+RUN apk add --no-cache nodejs npm yarn \
+	&& yarn install \
 	&& yarn cache clean
 
-# Remove frontend service not required for prod, dev nginx config as well
-RUN rm -rf /etc/s6-overlay/s6-rc.d/user/contents.d/frontend /etc/nginx/conf.d/dev.conf \
-	&& chmod 644 /etc/logrotate.d/nginx-proxy-manager
+# Remove frontend service not required for prod, dev config as well
+RUN rm -rf /etc/s6-overlay/s6-rc.d/user/contents.d/frontend /etc/haproxy/conf.d/dev.conf \
+	&& chmod 644 /etc/logrotate.d/haproxy-proxy-manager
 
 VOLUME [ "/data" ]
 ENTRYPOINT [ "/init" ]
 
 LABEL org.label-schema.schema-version="1.0" \
 	org.label-schema.license="MIT" \
-	org.label-schema.name="nginx-proxy-manager" \
-	org.label-schema.description="Docker container for managing Nginx proxy hosts with a simple, powerful interface " \
-	org.label-schema.url="https://github.com/jc21/nginx-proxy-manager" \
-	org.label-schema.vcs-url="https://github.com/jc21/nginx-proxy-manager.git" \
-	org.label-schema.cmd="docker run --rm -ti jc21/nginx-proxy-manager:latest"
+	org.label-schema.name="haproxy-proxy-manager" \
+	org.label-schema.description="Docker container for managing HAProxy proxy hosts with a simple, powerful interface " \
+	org.label-schema.url="https://github.com/eduardofbrito/haproxy-proxy-manager" \
+	org.label-schema.vcs-url="https://github.com/eduardofbrito/haproxy-proxy-manager.git" \
+	org.label-schema.cmd="docker run --rm -ti eduardofbrito/haproxy-proxy-manager:latest"

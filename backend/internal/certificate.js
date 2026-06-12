@@ -17,7 +17,7 @@ import tokenModel from "../models/token.js";
 import userModel from "../models/user.js";
 import internalAuditLog from "./audit-log.js";
 import internalHost from "./host.js";
-import internalNginx from "./nginx.js";
+import internalHaproxy from "./haproxy.js";
 
 const letsencryptConfig = "/etc/letsencrypt.ini";
 const certbotCommand = "certbot";
@@ -130,7 +130,7 @@ const internalCertificate = {
 				// Request a new Cert from LE. Let the fun begin.
 
 				// 1. Find out any hosts that are using any of the hostnames in this cert
-				// 2. Disable them in nginx temporarily
+				// 2. Disable them in HAProxy temporarily
 				// 3. Generate the LE config
 				// 4. Request cert
 				// 5. Remove LE config
@@ -139,7 +139,7 @@ const internalCertificate = {
 				// 1. Find out any hosts that are using any of the hostnames in this cert
 				const inUseResult = await internalHost.getHostsWithDomains(certificate.domain_names);
 
-				// 2. Disable them in nginx temporarily
+				// 2. Disable them in HAProxy temporarily
 				await internalCertificate.disableInUseHosts(inUseResult);
 
 				const user = await userModel.query().where("is_deleted", 0).andWhere("id", data.owner_user_id).first();
@@ -152,36 +152,36 @@ const internalCertificate = {
 				// With DNS challenge no config is needed, so skip 3 and 5.
 				if (certificate.meta?.dns_challenge) {
 					try {
-						await internalNginx.reload();
+						await internalHaproxy.reload();
 						// 4. Request cert
 						await internalCertificate.requestLetsEncryptSslWithDnsChallenge(certificate, user.email);
-						await internalNginx.reload();
+						await internalHaproxy.reload();
 						// 6. Re-instate previously disabled hosts
 						await internalCertificate.enableInUseHosts(inUseResult);
 					} catch (err) {
 						// In the event of failure, revert things and throw err back
 						await internalCertificate.enableInUseHosts(inUseResult);
-						await internalNginx.reload();
+						await internalHaproxy.reload();
 						throw err;
 					}
 				} else {
 					// 3. Generate the LE config
 					try {
-						await internalNginx.generateLetsEncryptRequestConfig(certificate);
-						await internalNginx.reload();
+						await internalHaproxy.generateLetsEncryptRequestConfig(certificate);
+						await internalHaproxy.reload();
 						setTimeout(() => {}, 5000);
 						// 4. Request cert
 						await internalCertificate.requestLetsEncryptSsl(certificate, user.email);
 						// 5. Remove LE config
-						await internalNginx.deleteLetsEncryptRequestConfig(certificate);
-						await internalNginx.reload();
+						await internalHaproxy.deleteLetsEncryptRequestConfig(certificate);
+						await internalHaproxy.reload();
 						// 6. Re-instate previously disabled hosts
 						await internalCertificate.enableInUseHosts(inUseResult);
 					} catch (err) {
 						// In the event of failure, revert things and throw err back
-						await internalNginx.deleteLetsEncryptRequestConfig(certificate);
+						await internalHaproxy.deleteLetsEncryptRequestConfig(certificate);
 						await internalCertificate.enableInUseHosts(inUseResult);
-						await internalNginx.reload();
+						await internalHaproxy.reload();
 						throw err;
 					}
 				}
@@ -1074,15 +1074,15 @@ const internalCertificate = {
 	disableInUseHosts: async (inUseResult) => {
 		if (inUseResult?.total_count) {
 			if (inUseResult?.proxy_hosts.length) {
-				await internalNginx.bulkDeleteConfigs("proxy_host", inUseResult.proxy_hosts);
+				await internalHaproxy.bulkDeleteConfigs("proxy_host", inUseResult.proxy_hosts);
 			}
 
 			if (inUseResult?.redirection_hosts.length) {
-				await internalNginx.bulkDeleteConfigs("redirection_host", inUseResult.redirection_hosts);
+				await internalHaproxy.bulkDeleteConfigs("redirection_host", inUseResult.redirection_hosts);
 			}
 
 			if (inUseResult?.dead_hosts.length) {
-				await internalNginx.bulkDeleteConfigs("dead_host", inUseResult.dead_hosts);
+				await internalHaproxy.bulkDeleteConfigs("dead_host", inUseResult.dead_hosts);
 			}
 		}
 	},
@@ -1098,15 +1098,15 @@ const internalCertificate = {
 	enableInUseHosts: async (inUseResult) => {
 		if (inUseResult.total_count) {
 			if (inUseResult.proxy_hosts.length) {
-				await internalNginx.bulkGenerateConfigs("proxy_host", inUseResult.proxy_hosts);
+				await internalHaproxy.bulkGenerateConfigs("proxy_host", inUseResult.proxy_hosts);
 			}
 
 			if (inUseResult.redirection_hosts.length) {
-				await internalNginx.bulkGenerateConfigs("redirection_host", inUseResult.redirection_hosts);
+				await internalHaproxy.bulkGenerateConfigs("redirection_host", inUseResult.redirection_hosts);
 			}
 
 			if (inUseResult.dead_hosts.length) {
-				await internalNginx.bulkGenerateConfigs("dead_host", inUseResult.dead_hosts);
+				await internalHaproxy.bulkGenerateConfigs("dead_host", inUseResult.dead_hosts);
 			}
 		}
 	},

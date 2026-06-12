@@ -89,12 +89,12 @@ const getRenderEngine = () => {
 	});
 
 	/**
-	 * nginxAccessRule expects the object given to have 2 properties:
+	 * haproxAclRule expects the object given to have 2 properties:
 	 *
 	 * directive  string
 	 * address    string
 	 */
-	renderEngine.registerFilter("nginxAccessRule", (v) => {
+	renderEngine.registerFilter("haproxAclRule", (v) => {
 		if (typeof v.directive !== "undefined" && typeof v.address !== "undefined" && v.directive && v.address) {
 			return `${v.directive} ${v.address};`;
 		}

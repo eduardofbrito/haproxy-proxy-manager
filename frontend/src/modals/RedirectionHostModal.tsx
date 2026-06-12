@@ -9,7 +9,7 @@ import {
 	Button,
 	DomainNamesField,
 	Loading,
-	NginxConfigField,
+	HaproxyConfigField,
 	SSLCertificateField,
 	SSLOptionsFields,
 } from "src/components";
@@ -305,7 +305,7 @@ const RedirectionHostModal = EasyModal.create(({ id, visible, remove }: Props) =
 												<SSLOptionsFields color="bg-yellow" />
 											</div>
 											<div className="tab-pane" id="tab-advanced" role="tabpanel">
-												<NginxConfigField />
+												<HaproxyConfigField />
 											</div>
 										</div>
 									</div>

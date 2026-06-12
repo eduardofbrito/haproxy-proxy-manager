@@ -20,11 +20,11 @@ const Dashboard = () => {
 						<HasPermission section={PROXY_HOSTS} permission={VIEW} hideError>
 							<div className="col-sm-6 col-lg-3">
 								<a
-									href="/nginx/proxy"
+									href="/haproxy/proxy"
 									className="card card-sm card-link card-link-pop"
 									onClick={(e) => {
 										e.preventDefault();
-										navigate("/nginx/proxy");
+										navigate("/haproxy/proxy");
 									}}
 								>
 									<div className="card-body">
@@ -47,11 +47,11 @@ const Dashboard = () => {
 						<HasPermission section={REDIRECTION_HOSTS} permission={VIEW} hideError>
 							<div className="col-sm-6 col-lg-3">
 								<a
-									href="/nginx/redirection"
+									href="/haproxy/redirection"
 									className="card card-sm card-link card-link-pop"
 									onClick={(e) => {
 										e.preventDefault();
-										navigate("/nginx/redirection");
+										navigate("/haproxy/redirection");
 									}}
 								>
 									<div className="card-body">
@@ -75,11 +75,11 @@ const Dashboard = () => {
 						<HasPermission section={STREAMS} permission={VIEW} hideError>
 							<div className="col-sm-6 col-lg-3">
 								<a
-									href="/nginx/stream"
+									href="/haproxy/stream"
 									className="card card-sm card-link card-link-pop"
 									onClick={(e) => {
 										e.preventDefault();
-										navigate("/nginx/stream");
+										navigate("/haproxy/stream");
 									}}
 								>
 									<div className="card-body">
@@ -100,11 +100,11 @@ const Dashboard = () => {
 						<HasPermission section={DEAD_HOSTS} permission={VIEW} hideError>
 							<div className="col-sm-6 col-lg-3">
 								<a
-									href="/nginx/404"
+									href="/haproxy/404"
 									className="card card-sm card-link card-link-pop"
 									onClick={(e) => {
 										e.preventDefault();
-										navigate("/nginx/404");
+										navigate("/haproxy/404");
 									}}
 								>
 									<div className="card-body">

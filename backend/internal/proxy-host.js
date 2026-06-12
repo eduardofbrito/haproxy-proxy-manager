@@ -6,7 +6,7 @@ import proxyHostModel from "../models/proxy_host.js";
 import internalAuditLog from "./audit-log.js";
 import internalCertificate from "./certificate.js";
 import internalHost from "./host.js";
-import internalNginx from "./nginx.js";
+import internalHaproxy from "./haproxy.js";
 
 const omissions = () => {
 	return ["is_deleted", "owner.is_deleted"];
@@ -84,8 +84,8 @@ const internalProxyHost = {
 				});
 			})
 			.then((row) => {
-				// Configure nginx
-				return internalNginx.configure(proxyHostModel, "proxy_host", row).then(() => {
+				// Configure HAProxy
+				return internalHaproxy.configure(proxyHostModel, "proxy_host", row).then(() => {
 					return row;
 				});
 			})
@@ -210,11 +210,11 @@ const internalProxyHost = {
 					})
 					.then((row) => {
 						if (!row.enabled) {
-							// No need to add nginx config if host is disabled
+							// No need to add HAProxy config if host is disabled
 							return row;
 						}
-						// Configure nginx
-						return internalNginx.configure(proxyHostModel, "proxy_host", row).then((new_meta) => {
+						// Configure HAProxy
+						return internalHaproxy.configure(proxyHostModel, "proxy_host", row).then((new_meta) => {
 							row.meta = new_meta;
 							return _.omit(internalHost.cleanRowCertificateMeta(row), omissions());
 						});
@@ -290,9 +290,9 @@ const internalProxyHost = {
 						is_deleted: 1,
 					})
 					.then(() => {
-						// Delete Nginx Config
-						return internalNginx.deleteConfig("proxy_host", row).then(() => {
-							return internalNginx.reload();
+						// Delete HAProxy Config
+						return internalHaproxy.deleteConfig("proxy_host", row).then(() => {
+							return internalHaproxy.reload();
 						});
 					})
 					.then(() => {
@@ -343,8 +343,8 @@ const internalProxyHost = {
 						enabled: 1,
 					})
 					.then(() => {
-						// Configure nginx
-						return internalNginx.configure(proxyHostModel, "proxy_host", row);
+						// Configure HAProxy
+						return internalHaproxy.configure(proxyHostModel, "proxy_host", row);
 					})
 					.then(() => {
 						// Add to audit log
@@ -391,9 +391,9 @@ const internalProxyHost = {
 						enabled: 0,
 					})
 					.then(() => {
-						// Delete Nginx Config
-						return internalNginx.deleteConfig("proxy_host", row).then(() => {
-							return internalNginx.reload();
+						// Delete HAProxy Config
+						return internalHaproxy.deleteConfig("proxy_host", row).then(() => {
+							return internalHaproxy.reload();
 						});
 					})
 					.then(() => {

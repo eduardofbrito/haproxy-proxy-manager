@@ -1,4 +1,4 @@
-import internalNginx from "../internal/nginx.js";
+import internalHaproxy from "../internal/haproxy.js";
 import { migrate as logger } from "../logger.js";
 
 const migrateName = "stream_domain";
@@ -10,16 +10,16 @@ async function regenerateDefaultHost(knex) {
 		return Promise.resolve();
 	}
 
-	return internalNginx
+	return internalHaproxy
 		.deleteConfig("default")
 		.then(() => {
-			return internalNginx.generateConfig("default", row);
+			return internalHaproxy.generateConfig("default", row);
 		})
 		.then(() => {
-			return internalNginx.test();
+			return internalHaproxy.test();
 		})
 		.then(() => {
-			return internalNginx.reload();
+			return internalHaproxy.reload();
 		});
 }
 

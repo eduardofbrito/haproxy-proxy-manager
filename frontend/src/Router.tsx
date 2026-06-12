@@ -21,10 +21,10 @@ const Certificates = lazy(() => import("src/pages/Certificates"));
 const Access = lazy(() => import("src/pages/Access"));
 const AuditLog = lazy(() => import("src/pages/AuditLog"));
 const Users = lazy(() => import("src/pages/Users"));
-const ProxyHosts = lazy(() => import("src/pages/Nginx/ProxyHosts"));
-const RedirectionHosts = lazy(() => import("src/pages/Nginx/RedirectionHosts"));
-const DeadHosts = lazy(() => import("src/pages/Nginx/DeadHosts"));
-const Streams = lazy(() => import("src/pages/Nginx/Streams"));
+const ProxyHosts = lazy(() => import("src/pages/Haproxy/ProxyHosts"));
+const RedirectionHosts = lazy(() => import("src/pages/Haproxy/RedirectionHosts"));
+const DeadHosts = lazy(() => import("src/pages/Haproxy/DeadHosts"));
+const Streams = lazy(() => import("src/pages/Haproxy/Streams"));
 
 function Router() {
 	const health = useHealth();
@@ -66,10 +66,10 @@ function Router() {
 							<Route path="/audit-log" element={<AuditLog />} />
 							<Route path="/settings" element={<Settings />} />
 							<Route path="/users" element={<Users />} />
-							<Route path="/nginx/proxy" element={<ProxyHosts />} />
-							<Route path="/nginx/redirection" element={<RedirectionHosts />} />
-							<Route path="/nginx/404" element={<DeadHosts />} />
-							<Route path="/nginx/stream" element={<Streams />} />
+							<Route path="/haproxy/proxy" element={<ProxyHosts />} />
+							<Route path="/haproxy/redirection" element={<RedirectionHosts />} />
+							<Route path="/haproxy/404" element={<DeadHosts />} />
+							<Route path="/haproxy/stream" element={<Streams />} />
 							<Route path="/" element={<Dashboard />} />
 						</Routes>
 					</Suspense>

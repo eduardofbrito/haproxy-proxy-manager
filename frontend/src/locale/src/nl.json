@@ -204,7 +204,7 @@
 		"defaultMessage": "Deze sectie vereist wat informatie over Certbot en zijn DNS plugins. Gebruik de documentatie van de bijbehorende plugins."
 	},
 	"certificates.http.reachability-404": {
-		"defaultMessage": "Er is een server gevonden op deze domeinnaam, maar dat lijkt niet Nginx Proxy Manager te zijn. Zorg ervoor dat je domein verwijst naar het IP waar je NPM-instantie draait."
+		"defaultMessage": "Er is een server gevonden op deze domeinnaam, maar dat lijkt niet HAProxy Proxy Manager te zijn. Zorg ervoor dat je domein verwijst naar het IP waar je NPM-instantie draait."
 	},
 	"certificates.http.reachability-failed-to-check": {
 		"defaultMessage": "Bereikbaarheid kan niet worden bepaald door een communicatiefout met site24x7.com."
@@ -479,11 +479,11 @@
 	"login.title": {
 		"defaultMessage": "Log in op je account"
 	},
-	"nginx-config.label": {
-		"defaultMessage": "Aangepaste Nginx-configuratie"
+	"haproxy-config.label": {
+		"defaultMessage": "Aangepaste HAProxy-configuratie"
 	},
-	"nginx-config.placeholder": {
-		"defaultMessage": "# Voer hier je aangepaste Nginx-configuratie in op eigen risico!"
+	"haproxy-config.placeholder": {
+		"defaultMessage": "# Voer hier je aangepaste HAProxy-configuratie in op eigen risico!"
 	},
 	"no-permission-error": {
 		"defaultMessage": "Je hebt geen toegang om dit te bekijken."
@@ -669,7 +669,7 @@
 		"defaultMessage": "Felicitatiepagina"
 	},
 	"settings.default-site.description": {
-		"defaultMessage": "Wat als Nginx een onbekende Host ontvangt?"
+		"defaultMessage": "Wat als HAProxy een onbekende Host ontvangt?"
 	},
 	"settings.default-site.html": {
 		"defaultMessage": "Aangepaste HTML"

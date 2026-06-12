@@ -6,20 +6,16 @@ set -e
 log_info 'Setting ownership ...'
 
 # root
-chown root /tmp/nginx
+chown root /tmp/npm
 
 locations=(
 	"/data"
 	"/etc/letsencrypt"
-	"/run/nginx"
-	"/tmp/nginx"
-	"/var/cache/nginx"
-	"/var/lib/logrotate"
-	"/var/lib/nginx"
-	"/var/log/nginx"
-	"/etc/nginx/nginx"
-	"/etc/nginx/nginx.conf"
-	"/etc/nginx/conf.d"
+	"/run/haproxy"
+	"/tmp/npm"
+	"/etc/haproxy"
+	"/var/log/haproxy"
+	"/etc/logrotate.d"
 )
 
 chownit() {

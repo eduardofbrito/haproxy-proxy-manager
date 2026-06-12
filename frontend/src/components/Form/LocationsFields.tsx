@@ -144,8 +144,8 @@ export function LocationsFields({ initialValues, name = "locations" }: Props) {
 						{advVisible.includes(idx) && (
 							<div className="">
 								<CodeEditor
-									language="nginx"
-									placeholder={intl.formatMessage({ id: "nginx-config.placeholder" })}
+									language="haproxy"
+									placeholder={intl.formatMessage({ id: "haproxy-config.placeholder" })}
 									padding={15}
 									data-color-mode="dark"
 									minHeight={170}

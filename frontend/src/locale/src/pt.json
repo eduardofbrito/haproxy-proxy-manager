@@ -147,7 +147,7 @@
 		"defaultMessage": "Esta secção requer conhecimentos sobre o Certbot e os seus plugins DNS. Consulte a documentação dos plugins."
 	},
 	"certificates.http.reachability-404": {
-		"defaultMessage": "Foi encontrado um servidor neste domínio, mas não parece ser o Nginx Proxy Manager. Certifique-se de que o domínio aponta para o IP onde a sua instância está a correr."
+		"defaultMessage": "Foi encontrado um servidor neste domínio, mas não parece ser o HAProxy Proxy Manager. Certifique-se de que o domínio aponta para o IP onde a sua instância está a correr."
 	},
 	"certificates.http.reachability-failed-to-check": {
 		"defaultMessage": "Falha ao verificar acessibilidade devido a um erro de comunicação com site24x7.com."
@@ -389,11 +389,11 @@
 	"login.title": {
 		"defaultMessage": "Iniciar sessão na sua conta"
 	},
-	"nginx-config.label": {
-		"defaultMessage": "Configuração Nginx Personalizada"
+	"haproxy-config.label": {
+		"defaultMessage": "Configuração HAProxy Personalizada"
 	},
-	"nginx-config.placeholder": {
-		"defaultMessage": "# Insira aqui a sua configuração Nginx personalizada (utilize por sua conta e risco!)"
+	"haproxy-config.placeholder": {
+		"defaultMessage": "# Insira aqui a sua configuração HAProxy personalizada (utilize por sua conta e risco!)"
 	},
 	"no-permission-error": {
 		"defaultMessage": "Não tem permissões para ver esta página."
@@ -579,7 +579,7 @@
 		"defaultMessage": "Página de Boas-vindas"
 	},
 	"settings.default-site.description": {
-		"defaultMessage": "O que apresentar quando o Nginx recebe um Host desconhecido"
+		"defaultMessage": "O que apresentar quando o HAProxy recebe um Host desconhecido"
 	},
 	"settings.default-site.html": {
 		"defaultMessage": "HTML Personalizado"

@@ -6,7 +6,7 @@ import redirectionHostModel from "../models/redirection_host.js";
 import internalAuditLog from "./audit-log.js";
 import internalCertificate from "./certificate.js";
 import internalHost from "./host.js";
-import internalNginx from "./nginx.js";
+import internalHaproxy from "./haproxy.js";
 
 const omissions = () => {
 	return ["is_deleted"];
@@ -84,8 +84,8 @@ const internalRedirectionHost = {
 				});
 			})
 			.then((row) => {
-				// Configure nginx
-				return internalNginx.configure(redirectionHostModel, "redirection_host", row).then(() => {
+				// Configure HAProxy
+				return internalHaproxy.configure(redirectionHostModel, "redirection_host", row).then(() => {
 					return row;
 				});
 			})
@@ -208,8 +208,8 @@ const internalRedirectionHost = {
 						expand: ["owner", "certificate"],
 					})
 					.then((row) => {
-						// Configure nginx
-						return internalNginx
+						// Configure HAProxy
+						return internalHaproxy
 							.configure(redirectionHostModel, "redirection_host", row)
 							.then((new_meta) => {
 								row.meta = new_meta;
@@ -288,9 +288,9 @@ const internalRedirectionHost = {
 						is_deleted: 1,
 					})
 					.then(() => {
-						// Delete Nginx Config
-						return internalNginx.deleteConfig("redirection_host", row).then(() => {
-							return internalNginx.reload();
+						// Delete HAProxy Config
+						return internalHaproxy.deleteConfig("redirection_host", row).then(() => {
+							return internalHaproxy.reload();
 						});
 					})
 					.then(() => {
@@ -341,8 +341,8 @@ const internalRedirectionHost = {
 						enabled: 1,
 					})
 					.then(() => {
-						// Configure nginx
-						return internalNginx.configure(redirectionHostModel, "redirection_host", row);
+						// Configure HAProxy
+						return internalHaproxy.configure(redirectionHostModel, "redirection_host", row);
 					})
 					.then(() => {
 						// Add to audit log
@@ -389,9 +389,9 @@ const internalRedirectionHost = {
 						enabled: 0,
 					})
 					.then(() => {
-						// Delete Nginx Config
-						return internalNginx.deleteConfig("redirection_host", row).then(() => {
-							return internalNginx.reload();
+						// Delete HAProxy Config
+						return internalHaproxy.deleteConfig("redirection_host", row).then(() => {
+							return internalHaproxy.reload();
 						});
 					})
 					.then(() => {

@@ -132,7 +132,7 @@
 		"defaultMessage": "Dieser Abschnitt erfordert einige Kenntnisse über Certbot und seine DNS-Plugins. Bitte konsultieren Sie die jeweilige Plugin-Dokumentation."
 	},
 	"certificates.http.reachability-404": {
-		"defaultMessage": "Unter dieser Domain wurde ein Server gefunden, aber es scheint sich nicht um Nginx Proxy Manager zu handeln. Bitte stellen Sie sicher, dass Ihre Domain auf die IP-Adresse verweist, unter der Ihre NPM-Instanz ausgeführt wird."
+		"defaultMessage": "Unter dieser Domain wurde ein Server gefunden, aber es scheint sich nicht um HAProxy Proxy Manager zu handeln. Bitte stellen Sie sicher, dass Ihre Domain auf die IP-Adresse verweist, unter der Ihre NPM-Instanz ausgeführt wird."
 	},
 	"certificates.http.reachability-failed-to-check": {
 		"defaultMessage": "Die Erreichbarkeit konnte aufgrund eines Kommunikationsfehlers mit site24x7.com nicht überprüft werden."
@@ -386,11 +386,11 @@
 	"login.title": {
 		"defaultMessage": "Anmelden"
 	},
-	"nginx-config.label": {
-		"defaultMessage": "Benutzerdefinierte Nginx Konfiguration"
+	"haproxy-config.label": {
+		"defaultMessage": "Benutzerdefinierte HAProxy Konfiguration"
 	},
-	"nginx-config.placeholder": {
-		"defaultMessage": "# Geben Sie hier Ihre benutzerdefinierte Nginx-Konfiguration auf eigene Gefahr ein!"
+	"haproxy-config.placeholder": {
+		"defaultMessage": "# Geben Sie hier Ihre benutzerdefinierte HAProxy-Konfiguration auf eigene Gefahr ein!"
 	},
 	"no-permission-error": {
 		"defaultMessage": "Sie haben keinen Zugriff, um dies anzuzeigen."
@@ -558,7 +558,7 @@
 		"defaultMessage": "Willkommensseite"
 	},
 	"settings.default-site.description": {
-		"defaultMessage": "Was angezeigt wird, wenn der Nginx eine unbekannte Webseitenanfrage bekommt"
+		"defaultMessage": "Was angezeigt wird, wenn der HAProxy eine unbekannte Webseitenanfrage bekommt"
 	},
 	"settings.default-site.html": {
 		"defaultMessage": "Benutzerdefinierte HTML"

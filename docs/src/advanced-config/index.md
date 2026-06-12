@@ -6,7 +6,7 @@ outline: deep
 
 ## Running processes as a user/group
 
-By default, the services (nginx etc) will run as `root` user inside the docker container.
+By default, the services (haproxy etc) will run as `root` user inside the docker container.
 You can change this behaviour by setting the following environment variables.
 Not only will they run the services as this user/group, they will change the ownership
 on the `data` and `letsencrypt` folders at startup.
@@ -14,7 +14,7 @@ on the `data` and `letsencrypt` folders at startup.
 ```yml
 services:
   app:
-    image: 'jc21/nginx-proxy-manager:{{VERSION}}'
+    image: 'jc21/haproxy-proxy-manager:{{VERSION}}'
     environment:
       PUID: 1000
       PGID: 1000
@@ -37,7 +37,7 @@ Create a network, ie "scoobydoo":
 docker network create scoobydoo
 ```
 
-Then add the following to the `docker-compose.yml` file for both NPM and any other
+Then add the following to the `docker-compose.yml` file for both HAProxy Proxy Manager and any other
 services running on this Docker host:
 
 ```yml
@@ -66,7 +66,7 @@ networks:
     name: scoobydoo
 ```
 
-Now in the NPM UI you can create a proxy host with `portainer` as the hostname,
+Now in the HAProxy Proxy Manager UI you can create a proxy host with `portainer` as the hostname,
 and port `9000` as the port. Even though this port isn't listed in the docker-compose
 file, it's "exposed" by the Portainer Docker image for you and not available on
 the Docker host outside of this Docker network. The service name is used as the
@@ -101,7 +101,7 @@ secrets:
 
 services:
   app:
-    image: 'jc21/nginx-proxy-manager:{{VERSION}}'
+    image: 'jc21/haproxy-proxy-manager:{{VERSION}}'
     restart: unless-stopped
     ports:
       # Public HTTP Port:
@@ -152,7 +152,7 @@ On some Docker hosts IPv6 may not be enabled. In these cases, the following mess
 
 > Address family not supported by protocol
 
-The easy fix is to add a Docker environment variable to the Nginx Proxy Manager stack:
+The easy fix is to add a Docker environment variable to the HAProxy Proxy Manager stack:
 
 ```yml
     environment:
@@ -161,33 +161,33 @@ The easy fix is to add a Docker environment variable to the Nginx Proxy Manager 
 
 ## Disabling IP Ranges Fetch
 
-By default, NPM fetches IP ranges from CloudFront and Cloudflare during application startup. In environments with limited internet access or to speed up container startup, this fetch can be disabled:
+By default, HAProxy Proxy Manager fetches IP ranges from CloudFront and Cloudflare during application startup. In environments with limited internet access or to speed up container startup, this fetch can be disabled:
 
 ```yml
     environment:
       IP_RANGES_FETCH_ENABLED: 'false'
 ```
 
-## Custom Nginx Configurations
+## Custom HAProxy Configurations
 
-If you are a more advanced user, you might be itching for extra Nginx customizability.
+If you are a more advanced user, you might be itching for extra HAProxy customizability.
 
-NPM has the ability to include different custom configuration snippets in different places.
+HAPM has the ability to include different custom configuration snippets in different places.
 
-You can add your custom configuration snippet files at `/data/nginx/custom` as follow:
+You can add your custom configuration snippet files at `/data/haproxy/custom` as follow:
 
- - `/data/nginx/custom/root_top.conf`: Included at the top of nginx.conf
- - `/data/nginx/custom/root.conf`: Included at the very end of nginx.conf
- - `/data/nginx/custom/http_top.conf`: Included at the top of the main http block
- - `/data/nginx/custom/http.conf`: Included at the end of the main http block
- - `/data/nginx/custom/events.conf`: Included at the end of the events block
- - `/data/nginx/custom/stream.conf`: Included at the end of the main stream block
- - `/data/nginx/custom/server_proxy.conf`: Included at the end of every proxy server block
- - `/data/nginx/custom/server_redirect.conf`: Included at the end of every redirection server block
- - `/data/nginx/custom/server_stream.conf`: Included at the end of every stream server block
- - `/data/nginx/custom/server_stream_tcp.conf`: Included at the end of every TCP stream server block
- - `/data/nginx/custom/server_stream_udp.conf`: Included at the end of every UDP stream server block
- - `/data/nginx/custom/server_dead.conf`: Included at the end of every 404 server block
+ - `/data/haproxy/custom/root_top.conf`: Included at the top of haproxy.cfg
+ - `/data/haproxy/custom/root.cfg`: Included at the very end of haproxy.cfg
+ - `/data/haproxy/custom/http_top.conf`: Included at the top of the main http block
+ - `/data/haproxy/custom/http.cfg`: Included at the end of the main http block
+ - `/data/haproxy/custom/events.conf`: Included at the end of the events block
+ - `/data/haproxy/custom/stream.conf`: Included at the end of the main stream block
+ - `/data/haproxy/custom/server_proxy.conf`: Included at the end of every proxy server block
+ - `/data/haproxy/custom/server_redirect.conf`: Included at the end of every redirection server block
+ - `/data/haproxy/custom/server_stream.conf`: Included at the end of every stream server block
+ - `/data/haproxy/custom/server_stream_tcp.conf`: Included at the end of every TCP stream server block
+ - `/data/haproxy/custom/server_stream_udp.conf`: Included at the end of every UDP stream server block
+ - `/data/haproxy/custom/server_dead.conf`: Included at the end of every 404 server block
 
 Every file is optional.
 
@@ -206,25 +206,25 @@ value by specifying it as a Docker environment variable. The default if not spec
 
 ## Customising logrotate settings
 
-By default, NPM rotates the access- and error logs weekly and keeps 4 and 10 log files respectively.
+By default, HAProxy Proxy Manager rotates the access- and error logs weekly and keeps 4 and 10 log files respectively.
 Depending on the usage, this can lead to large log files, especially access logs.
 You can customise the logrotate configuration through a mount (if your custom config is `logrotate.custom`):
 
 ```yml
   volumes:
     ...
-    - ./logrotate.custom:/etc/logrotate.d/nginx-proxy-manager
+    - ./logrotate.custom:/etc/logrotate.d/haproxy-proxy-manager
 ```
 
-For reference, the default configuration can be found [here](https://github.com/NginxProxyManager/nginx-proxy-manager/blob/develop/docker/rootfs/etc/logrotate.d/nginx-proxy-manager).
+For reference, the default configuration can be found [here](https://github.com/HAProxyProxyManager/haproxy-proxy-manager/blob/develop/docker/rootfs/etc/logrotate.d/haproxy-proxy-manager).
 
 ## Enabling the geoip2 module
 
-To enable the geoip2 module, you can create the custom configuration file `/data/nginx/custom/root_top.conf` and include the following snippet:
+To enable the geoip2 module, you can create the custom configuration file `/data/haproxy/custom/root_top.conf` and include the following snippet:
 
 ```
-load_module /usr/lib/nginx/modules/ngx_http_geoip2_module.so;
-load_module /usr/lib/nginx/modules/ngx_stream_geoip2_module.so;
+load_module /usr/lib/haproxy/modules/ngx_http_geoip2_module.so;
+load_module /usr/lib/haproxy/modules/ngx_stream_geoip2_module.so;
 ```
 
 ## Auto Initial User Creation
@@ -237,16 +237,16 @@ Setting these environment variables will create the default user on startup, ski
       INITIAL_ADMIN_PASSWORD: mypassword1
 ```
 
-## Disable Nginx Resolver
+## Disable HAProxy Resolver
 
-On startup, we generate a resolvers directive for Nginx unless this is defined:
+On startup, we generate a resolvers directive for HAProxy unless this is defined:
 
 ```yml
     environment:
       DISABLE_RESOLVER: true
 ```
 
-In this configuration, all DNS queries performed by Nginx will fall to the `/etc/hosts` file
+In this configuration, all DNS queries performed by HAProxy will fall to the `/etc/hosts` file
 and then the `/etc/resolv.conf`.
 
 

@@ -4,6 +4,6 @@ export * from "./BasicAuthFields";
 export * from "./DNSProviderFields";
 export * from "./DomainNamesField";
 export * from "./LocationsFields";
-export * from "./NginxConfigField";
+export * from "./HaproxyConfigField";
 export * from "./SSLCertificateField";
 export * from "./SSLOptionsFields";

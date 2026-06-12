@@ -6,7 +6,7 @@ export async function updateRedirectionHost(item: RedirectionHost): Promise<Redi
 	const { id, createdOn: _, modifiedOn: __, ...data } = item;
 
 	return await api.put({
-		url: `/nginx/redirection-hosts/${id}`,
+		url: `/haproxy/redirection-hosts/${id}`,
 		data: data,
 	});
 }

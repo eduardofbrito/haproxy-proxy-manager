@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import errs from "../lib/error.js";
 import settingModel from "../models/setting.js";
-import internalNginx from "./nginx.js";
+import internalHaproxy from "./haproxy.js";
 
 const internalSetting = {
 	/**
@@ -35,36 +35,36 @@ const internalSetting = {
 				if (row.id === "default-site") {
 					// write the html if we need to
 					if (row.value === "html") {
-						fs.writeFileSync("/data/nginx/default_www/index.html", row.meta.html, { encoding: "utf8" });
+						fs.writeFileSync("/data/haproxy/default_www/index.html", row.meta.html, { encoding: "utf8" });
 					}
 
-					// Configure nginx
-					return internalNginx
+					// Configure HAProxy
+					return internalHaproxy
 						.deleteConfig("default")
 						.then(() => {
-							return internalNginx.generateConfig("default", row);
+							return internalHaproxy.generateConfig("default", row);
 						})
 						.then(() => {
-							return internalNginx.test();
+							return internalHaproxy.test();
 						})
 						.then(() => {
-							return internalNginx.reload();
+							return internalHaproxy.reload();
 						})
 						.then(() => {
 							return row;
 						})
 						.catch((/*err*/) => {
-							internalNginx
+							internalHaproxy
 								.deleteConfig("default")
 								.then(() => {
-									return internalNginx.test();
+									return internalHaproxy.test();
 								})
 								.then(() => {
-									return internalNginx.reload();
+									return internalHaproxy.reload();
 								})
 								.then(() => {
 									// I'm being slack here I know..
-									throw new errs.ValidationError("Could not reconfigure Nginx. Please check logs.");
+									throw new errs.ValidationError("Could not reconfigure HAProxy. Please check logs.");
 								});
 						});
 				}

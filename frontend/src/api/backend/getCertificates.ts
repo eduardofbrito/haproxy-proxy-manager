@@ -4,7 +4,7 @@ import type { Certificate } from "./models";
 
 export async function getCertificates(expand?: CertificateExpansion[], params = {}): Promise<Certificate[]> {
 	return await api.get({
-		url: "/nginx/certificates",
+		url: "/haproxy/certificates",
 		params: {
 			expand: expand?.join(","),
 			...params,

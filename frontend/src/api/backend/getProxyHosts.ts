@@ -4,7 +4,7 @@ import type { ProxyHost } from "./models";
 
 export async function getProxyHosts(expand?: ProxyHostExpansion[], params = {}): Promise<ProxyHost[]> {
 	return await api.get({
-		url: "/nginx/proxy-hosts",
+		url: "/haproxy/proxy-hosts",
 		params: {
 			expand: expand?.join(","),
 			...params,

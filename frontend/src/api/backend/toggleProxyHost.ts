@@ -2,6 +2,6 @@ import * as api from "./base";
 
 export async function toggleProxyHost(id: number, enabled: boolean): Promise<boolean> {
 	return await api.post({
-		url: `/nginx/proxy-hosts/${id}/${enabled ? "enable" : "disable"}`,
+		url: `/haproxy/proxy-hosts/${id}/${enabled ? "enable" : "disable"}`,
 	});
 }

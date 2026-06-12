@@ -4,7 +4,7 @@ import type { RedirectionHost } from "./models";
 
 export async function getRedirectionHosts(expand?: HostExpansion[], params = {}): Promise<RedirectionHost[]> {
 	return await api.get({
-		url: "/nginx/redirection-hosts",
+		url: "/haproxy/redirection-hosts",
 		params: {
 			expand: expand?.join(","),
 			...params,

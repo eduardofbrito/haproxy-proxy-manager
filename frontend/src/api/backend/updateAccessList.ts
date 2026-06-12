@@ -6,7 +6,7 @@ export async function updateAccessList(item: AccessList): Promise<AccessList> {
 	const { id, createdOn: _, modifiedOn: __, ...data } = item;
 
 	return await api.put({
-		url: `/nginx/access-lists/${id}`,
+		url: `/haproxy/access-lists/${id}`,
 		data: data,
 	});
 }

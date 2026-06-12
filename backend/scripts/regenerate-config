@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import * as process from "node:process"; // Use the node: protocol for built-ins
-import internalNginx from "../internal/nginx.js";
+import internalHaproxy from "../internal/haproxy.js";
 import { global as logger } from "../logger.js";
 import deadHostModel from "../models/dead_host.js";
 import proxyHostModel from "../models/proxy_host.js";
@@ -60,7 +60,7 @@ const processItems = async (model, type) => {
 	for (const row of rows) {
 		if (!DRY_RUN) {
 			logIt(`[${type}] Regenerating config #${row.id}: ${row.domain_names ? row.domain_names.join(", ") : 'port ' + row.incoming_port}`);
-			await internalNginx.configure(proxyHostModel, "proxy_host", row);
+		await internalHaproxy.configure(proxyHostModel, "proxy_host", row);
 		} else {
 			logIt(`[${type}] Skipping generation of config #${row.id}: ${row.domain_names ? row.domain_names.join(", ") : 'port ' + row.incoming_port}`);
 		}

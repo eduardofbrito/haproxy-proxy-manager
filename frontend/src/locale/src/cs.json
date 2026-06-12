@@ -204,7 +204,7 @@
 		"defaultMessage": "Tato sekce vyžaduje znalost Certbotu a jeho DNS doplňků. Prosím, podívejte se do dokumentace příslušného doplňku."
 	},
 	"certificates.http.reachability-404": {
-		"defaultMessage": "Na této doméně byl nalezen server, ale nezdá se, že jde o Nginx Proxy Manager. Ujistěte se, že vaše doména směřuje na IP, kde běží vaše instance NPM."
+		"defaultMessage": "Na této doméně byl nalezen server, ale nezdá se, že jde o HAProxy Proxy Manager. Ujistěte se, že vaše doména směřuje na IP, kde běží vaše instance NPM."
 	},
 	"certificates.http.reachability-failed-to-check": {
 		"defaultMessage": "Nepodařilo se ověřit dostupnost kvůli chybě komunikace se službou site24x7.com."
@@ -473,11 +473,11 @@
 	"login.title": {
 		"defaultMessage": "Přihlaste se ke svému účtu"
 	},
-	"nginx-config.label": {
-		"defaultMessage": "Vlastní Nginx konfigurace"
+	"haproxy-config.label": {
+		"defaultMessage": "Vlastní HAProxy konfigurace"
 	},
-	"nginx-config.placeholder": {
-		"defaultMessage": "# Zadejte vlastní Nginx konfiguraci na vlastní riziko!"
+	"haproxy-config.placeholder": {
+		"defaultMessage": "# Zadejte vlastní HAProxy konfigurace na vlastní riziko!"
 	},
 	"no-permission-error": {
 		"defaultMessage": "Nemáte oprávnění k zobrazení tohoto obsahu."
@@ -663,7 +663,7 @@
 		"defaultMessage": "Gratulační stránka"
 	},
 	"settings.default-site.description": {
-		"defaultMessage": "Co zobrazit, když Nginx zachytí neznámého hostitele"
+		"defaultMessage": "Co zobrazit, když HAProxy zachytí neznámého hostitele"
 	},
 	"settings.default-site.html": {
 		"defaultMessage": "Vlastní HTML"

@@ -147,7 +147,7 @@
 		"defaultMessage": "Bagian ini memerlukan pengetahuan tentang Certbot dan plugin DNS-nya. Silakan merujuk dokumentasi plugin terkait."
 	},
 	"certificates.http.reachability-404": {
-		"defaultMessage": "Ada server yang ditemukan pada domain ini tetapi tampaknya bukan Nginx Proxy Manager. Pastikan domain Anda mengarah ke IP tempat instance NPM berjalan."
+		"defaultMessage": "Ada server yang ditemukan pada domain ini tetapi tampaknya bukan HAProxy Proxy Manager. Pastikan domain Anda mengarah ke IP tempat instance NPM berjalan."
 	},
 	"certificates.http.reachability-failed-to-check": {
 		"defaultMessage": "Gagal memeriksa keterjangkauan karena kesalahan komunikasi dengan site24x7.com."
@@ -389,11 +389,11 @@
 	"login.title": {
 		"defaultMessage": "Masuk ke akun Anda"
 	},
-	"nginx-config.label": {
-		"defaultMessage": "Konfigurasi Nginx Kustom"
+	"haproxy-config.label": {
+		"defaultMessage": "Konfigurasi HAProxy Kustom"
 	},
-	"nginx-config.placeholder": {
-		"defaultMessage": "# Masukkan konfigurasi Nginx kustom Anda di sini dengan risiko Anda sendiri!"
+	"haproxy-config.placeholder": {
+		"defaultMessage": "# Masukkan konfigurasi HAProxy kustom Anda di sini dengan risiko Anda sendiri!"
 	},
 	"no-permission-error": {
 		"defaultMessage": "Anda tidak memiliki akses untuk melihat ini."
@@ -579,7 +579,7 @@
 		"defaultMessage": "Halaman Ucapan Selamat"
 	},
 	"settings.default-site.description": {
-		"defaultMessage": "Apa yang ditampilkan saat Nginx diakses dengan Host yang tidak dikenal"
+		"defaultMessage": "Apa yang ditampilkan saat HAProxy diakses dengan Host yang tidak dikenal"
 	},
 	"settings.default-site.html": {
 		"defaultMessage": "HTML Kustom"

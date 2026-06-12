@@ -204,7 +204,7 @@
 		"defaultMessage": "Этот раздел требует знаний о Certbot и его DNS-плагинах. Пожалуйста, обратитесь к документации соответствующих плагинов."
 	},
 	"certificates.http.reachability-404": {
-		"defaultMessage": "На этом домене найден сервер, но, похоже, это не Nginx Proxy Manager. Убедитесь, что ваш домен указывает на IP-адрес, где запущен ваш экземпляр NPM."
+		"defaultMessage": "На этом домене найден сервер, но, похоже, это не HAProxy Proxy Manager. Убедитесь, что ваш домен указывает на IP-адрес, где запущен ваш экземпляр NPM."
 	},
 	"certificates.http.reachability-failed-to-check": {
 		"defaultMessage": "Не удалось проверить доступность из‑за ошибки связи с site24x7.com."
@@ -479,10 +479,10 @@
 	"login.title": {
 		"defaultMessage": "Авторизация"
 	},
-	"nginx-config.label": {
-		"defaultMessage": "Своя Nginx-конфигурация"
+	"haproxy-config.label": {
+		"defaultMessage": "Своя HAProxy-конфигурация"
 	},
-	"nginx-config.placeholder": {
+	"haproxy-config.placeholder": {
 		"defaultMessage": "# Введите здесь свою Nginx-конфигурацию, будьте осторожны!"
 	},
 	"no-permission-error": {
@@ -669,7 +669,7 @@
 		"defaultMessage": "Страница поздравления"
 	},
 	"settings.default-site.description": {
-		"defaultMessage": "Что показывать, когда Nginx получает неизвестный хост"
+		"defaultMessage": "Что показывать, когда HAProxy получает неизвестный хост"
 	},
 	"settings.default-site.html": {
 		"defaultMessage": "Свой HTML"

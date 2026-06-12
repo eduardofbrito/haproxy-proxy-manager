@@ -6,7 +6,7 @@ import streamModel from "../models/stream.js";
 import internalAuditLog from "./audit-log.js";
 import internalCertificate from "./certificate.js";
 import internalHost from "./host.js";
-import internalNginx from "./nginx.js";
+import internalHaproxy from "./haproxy.js";
 
 const omissions = () => {
 	return ["is_deleted", "owner.is_deleted", "certificate.is_deleted"];
@@ -66,8 +66,8 @@ const internalStream = {
 				});
 			})
 			.then((row) => {
-				// Configure nginx
-				return internalNginx.configure(streamModel, "stream", row).then(() => {
+				// Configure HAProxy
+				return internalHaproxy.configure(streamModel, "stream", row).then(() => {
 					return row;
 				});
 			})
@@ -160,7 +160,7 @@ const internalStream = {
 			})
 			.then(() => {
 				return internalStream.get(access, { id: thisData.id, expand: ["owner", "certificate"] }).then((row) => {
-					return internalNginx.configure(streamModel, "stream", row).then((new_meta) => {
+					return internalHaproxy.configure(streamModel, "stream", row).then((new_meta) => {
 						row.meta = new_meta;
 						return _.omit(internalHost.cleanRowCertificateMeta(row), omissions());
 					});
@@ -237,9 +237,9 @@ const internalStream = {
 						is_deleted: 1,
 					})
 					.then(() => {
-						// Delete Nginx Config
-						return internalNginx.deleteConfig("stream", row).then(() => {
-							return internalNginx.reload();
+						// Delete HAProxy Config
+						return internalHaproxy.deleteConfig("stream", row).then(() => {
+							return internalHaproxy.reload();
 						});
 					})
 					.then(() => {
@@ -290,8 +290,8 @@ const internalStream = {
 						enabled: 1,
 					})
 					.then(() => {
-						// Configure nginx
-						return internalNginx.configure(streamModel, "stream", row);
+						// Configure HAProxy
+						return internalHaproxy.configure(streamModel, "stream", row);
 					})
 					.then(() => {
 						// Add to audit log
@@ -338,9 +338,9 @@ const internalStream = {
 						enabled: 0,
 					})
 					.then(() => {
-						// Delete Nginx Config
-						return internalNginx.deleteConfig("stream", row).then(() => {
-							return internalNginx.reload();
+						// Delete HAProxy Config
+						return internalHaproxy.deleteConfig("stream", row).then(() => {
+							return internalHaproxy.reload();
 						});
 					})
 					.then(() => {

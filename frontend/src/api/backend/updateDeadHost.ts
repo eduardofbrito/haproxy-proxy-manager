@@ -6,7 +6,7 @@ export async function updateDeadHost(item: DeadHost): Promise<DeadHost> {
 	const { id, createdOn: _, modifiedOn: __, ...data } = item;
 
 	return await api.put({
-		url: `/nginx/dead-hosts/${id}`,
+		url: `/haproxy/dead-hosts/${id}`,
 		data: data,
 	});
 }

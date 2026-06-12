@@ -14,8 +14,8 @@ PGID=${PGID:-0}
 
 # If changing the username and group name below,
 # ensure all references to this user is also changed.
-# See docker/rootfs/etc/logrotate.d/nginx-proxy-manager
-# and docker/rootfs/etc/nginx/nginx.conf
+# See docker/rootfs/etc/logrotate.d/haproxy-proxy-manager
+# and docker/rootfs/etc/haproxy/haproxy.cfg
 NPMUSER=npm
 NPMGROUP=npm
 NPMHOME=/tmp/npmuserhome

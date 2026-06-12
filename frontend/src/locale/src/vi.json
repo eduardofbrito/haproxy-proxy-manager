@@ -386,11 +386,11 @@
 	"login.title": {
 		"defaultMessage": "Đăng nhập vào tài khoản của bạn"
 	},
-	"nginx-config.label": {
-		"defaultMessage": "Cấu hình Nginx tùy chỉnh"
+	"haproxy-config.label": {
+		"defaultMessage": "Cấu hình HAProxy tùy chỉnh"
 	},
-	"nginx-config.placeholder": {
-		"defaultMessage": "# Nhập cấu hình Nginx tùy chỉnh của bạn vào đây và bạn phải tự chịu rủi ro!"
+	"haproxy-config.placeholder": {
+		"defaultMessage": "# Nhập cấu hình HAProxy tùy chỉnh của bạn vào đây và bạn phải tự chịu rủi ro!"
 	},
 	"no-permission-error": {
 		"defaultMessage": "Bạn không có quyền truy cập trang này."
@@ -558,7 +558,7 @@
 		"defaultMessage": "Trang chào mừng"
 	},
 	"settings.default-site.description": {
-		"defaultMessage": "Hiển thị gì khi Nginx gặp phải Máy chủ không xác định"
+		"defaultMessage": "Hiển thị gì khi HAProxy gặp phải Máy chủ không xác định"
 	},
 	"settings.default-site.html": {
 		"defaultMessage": "HTML tùy chỉnh"

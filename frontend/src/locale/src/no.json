@@ -204,7 +204,7 @@
 		"defaultMessage": "Denne seksjonen krever noe kunnskap om Certbot og dets DNS-plugins. Vennligst konsulter dokumentasjonen for de respektive pluginene."
 	},
 	"certificates.http.reachability-404": {
-		"defaultMessage": "Det finnes en server på dette domenet, men det ser ikke ut til å være Nginx Proxy Manager. Vennligst sørg for at domenet ditt peker til IP-en der NPM-instansen kjører."
+		"defaultMessage": "Det finnes en server på dette domenet, men det ser ikke ut til å være HAProxy Proxy Manager. Vennligst sørg for at domenet ditt peker til IP-en der NPM-instansen kjører."
 	},
 	"certificates.http.reachability-failed-to-check": {
 		"defaultMessage": "Kunne ikke sjekke tilgjengeligheten på grunn av en kommunikasjonsfeil med site24x7.com."
@@ -479,11 +479,11 @@
 	"login.title": {
 		"defaultMessage": "Logg på kontoen din"
 	},
-	"nginx-config.label": {
-		"defaultMessage": "Egendefinert Nginx-konfigurasjon"
+	"haproxy-config.label": {
+		"defaultMessage": "Egendefinert HAProxy-konfigurasjon"
 	},
-	"nginx-config.placeholder": {
-		"defaultMessage": "# Skriv inn din egendefinerte Nginx-konfigurasjon her på egen risiko!"
+	"haproxy-config.placeholder": {
+		"defaultMessage": "# Skriv inn din egendefinerte HAProxy-konfigurasjon her på egen risiko!"
 	},
 	"no-permission-error": {
 		"defaultMessage": "Du har ikke tilgang til å se dette."
@@ -669,7 +669,7 @@
 		"defaultMessage": "Gratulerer-side"
 	},
 	"settings.default-site.description": {
-		"defaultMessage": "Hva som skal vises når Nginx treffes med en ukjent vert"
+		"defaultMessage": "Hva som skal vises når HAProxy treffes med en ukjent vert"
 	},
 	"settings.default-site.html": {
 		"defaultMessage": "Egendefinert HTML"

@@ -6,7 +6,7 @@ export async function updateProxyHost(item: ProxyHost): Promise<ProxyHost> {
 	const { id, createdOn: _, modifiedOn: __, ...data } = item;
 
 	return await api.put({
-		url: `/nginx/proxy-hosts/${id}`,
+		url: `/haproxy/proxy-hosts/${id}`,
 		data: data,
 	});
 }

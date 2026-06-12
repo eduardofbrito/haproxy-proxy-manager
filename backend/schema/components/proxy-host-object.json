@@ -75,8 +75,8 @@
 		"meta": {
 			"type": "object",
 			"example": {
-				"nginx_online": true,
-				"nginx_err": null
+				"haproxy_online": true,
+				"haproxy_err": null
 			}
 		},
 		"allow_websocket_upgrade": {

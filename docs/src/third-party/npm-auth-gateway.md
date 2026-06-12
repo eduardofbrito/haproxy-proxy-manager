@@ -66,11 +66,11 @@ Browser → NPM (SSL) → Auth Gateway → Auth Provider
 | Endpoint | Purpose |
 |---|---|
 | `POST /api/tokens` | Authentication |
-| `GET /api/nginx/proxy-hosts` | List proxy hosts |
-| `GET /api/nginx/access-lists` | List access lists |
-| `PUT /api/nginx/access-lists/:id` | Update access list IPs |
-| `POST /api/nginx/access-lists` | Create access list |
-| `GET /api/nginx/certificates` | List SSL certificates |
+| `GET /api/haproxy/proxy-hosts` | List proxy hosts |
+| `GET /api/haproxy/access-lists` | List access lists |
+| `PUT /api/haproxy/access-lists/:id` | Update access list IPs |
+| `POST /api/haproxy/access-lists` | Create access list |
+| `GET /api/haproxy/certificates` | List SSL certificates |
 
 ## Setup
 

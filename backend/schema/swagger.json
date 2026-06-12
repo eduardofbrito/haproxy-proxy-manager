@@ -1,9 +1,9 @@
 {
 	"openapi": "3.1.0",
 	"info": {
-		"title": "Nginx Proxy Manager API",
+		"title": "HAProxy Proxy Manager API",
 		"version": "2.x.x",
-		"description": "This is the official API documentation for Nginx Proxy Manager.\n\nMost endpoints require authentication via Bearer Token (JWT). You can generate a token by logging in via the `POST /tokens` endpoint.\n\nFor more information, visit the [Nginx Proxy Manager Documentation](https://nginxproxymanager.com)."
+		"description": "This is the official API documentation for HAProxy Proxy Manager.\n\nMost endpoints require authentication via Bearer Token (JWT). You can generate a token by logging in via the `POST /tokens` endpoint.\n\nFor more information, visit the [HAProxy Proxy Manager Documentation](https://haproxyproxymanager.com)."
 	},
 	"servers": [
 		{
@@ -81,185 +81,185 @@
 				"$ref": "./paths/audit-log/id/get.json"
 			}
 		},
-		"/nginx/access-lists": {
+		"/haproxy/access-lists": {
 			"get": {
-				"$ref": "./paths/nginx/access-lists/get.json"
+				"$ref": "./paths/haproxy/access-lists/get.json"
 			},
 			"post": {
-				"$ref": "./paths/nginx/access-lists/post.json"
+				"$ref": "./paths/haproxy/access-lists/post.json"
 			}
 		},
-		"/nginx/access-lists/{listID}": {
+		"/haproxy/access-lists/{listID}": {
 			"get": {
-				"$ref": "./paths/nginx/access-lists/listID/get.json"
+				"$ref": "./paths/haproxy/access-lists/listID/get.json"
 			},
 			"put": {
-				"$ref": "./paths/nginx/access-lists/listID/put.json"
+				"$ref": "./paths/haproxy/access-lists/listID/put.json"
 			},
 			"delete": {
-				"$ref": "./paths/nginx/access-lists/listID/delete.json"
+				"$ref": "./paths/haproxy/access-lists/listID/delete.json"
 			}
 		},
-		"/nginx/certificates": {
+		"/haproxy/certificates": {
 			"get": {
-				"$ref": "./paths/nginx/certificates/get.json"
+				"$ref": "./paths/haproxy/certificates/get.json"
 			},
 			"post": {
-				"$ref": "./paths/nginx/certificates/post.json"
+				"$ref": "./paths/haproxy/certificates/post.json"
 			}
 		},
-		"/nginx/certificates/dns-providers": {
+		"/haproxy/certificates/dns-providers": {
 			"get": {
-				"$ref": "./paths/nginx/certificates/dns-providers/get.json"
+				"$ref": "./paths/haproxy/certificates/dns-providers/get.json"
 			}
 		},
-		"/nginx/certificates/validate": {
+		"/haproxy/certificates/validate": {
 			"post": {
-				"$ref": "./paths/nginx/certificates/validate/post.json"
+				"$ref": "./paths/haproxy/certificates/validate/post.json"
 			}
 		},
-		"/nginx/certificates/test-http": {
+		"/haproxy/certificates/test-http": {
 			"post": {
-				"$ref": "./paths/nginx/certificates/test-http/post.json"
+				"$ref": "./paths/haproxy/certificates/test-http/post.json"
 			}
 		},
-		"/nginx/certificates/{certID}": {
+		"/haproxy/certificates/{certID}": {
 			"get": {
-				"$ref": "./paths/nginx/certificates/certID/get.json"
+				"$ref": "./paths/haproxy/certificates/certID/get.json"
 			},
 			"delete": {
-				"$ref": "./paths/nginx/certificates/certID/delete.json"
+				"$ref": "./paths/haproxy/certificates/certID/delete.json"
 			}
 		},
-		"/nginx/certificates/{certID}/download": {
+		"/haproxy/certificates/{certID}/download": {
 			"get": {
-				"$ref": "./paths/nginx/certificates/certID/download/get.json"
+				"$ref": "./paths/haproxy/certificates/certID/download/get.json"
 			}
 		},
-		"/nginx/certificates/{certID}/renew": {
+		"/haproxy/certificates/{certID}/renew": {
 			"post": {
-				"$ref": "./paths/nginx/certificates/certID/renew/post.json"
+				"$ref": "./paths/haproxy/certificates/certID/renew/post.json"
 			}
 		},
-		"/nginx/certificates/{certID}/upload": {
+		"/haproxy/certificates/{certID}/upload": {
 			"post": {
-				"$ref": "./paths/nginx/certificates/certID/upload/post.json"
+				"$ref": "./paths/haproxy/certificates/certID/upload/post.json"
 			}
 		},
-		"/nginx/proxy-hosts": {
+		"/haproxy/proxy-hosts": {
 			"get": {
-				"$ref": "./paths/nginx/proxy-hosts/get.json"
+				"$ref": "./paths/haproxy/proxy-hosts/get.json"
 			},
 			"post": {
-				"$ref": "./paths/nginx/proxy-hosts/post.json"
+				"$ref": "./paths/haproxy/proxy-hosts/post.json"
 			}
 		},
-		"/nginx/proxy-hosts/{hostID}": {
+		"/haproxy/proxy-hosts/{hostID}": {
 			"get": {
-				"$ref": "./paths/nginx/proxy-hosts/hostID/get.json"
+				"$ref": "./paths/haproxy/proxy-hosts/hostID/get.json"
 			},
 			"put": {
-				"$ref": "./paths/nginx/proxy-hosts/hostID/put.json"
+				"$ref": "./paths/haproxy/proxy-hosts/hostID/put.json"
 			},
 			"delete": {
-				"$ref": "./paths/nginx/proxy-hosts/hostID/delete.json"
+				"$ref": "./paths/haproxy/proxy-hosts/hostID/delete.json"
 			}
 		},
-		"/nginx/proxy-hosts/{hostID}/enable": {
+		"/haproxy/proxy-hosts/{hostID}/enable": {
 			"post": {
-				"$ref": "./paths/nginx/proxy-hosts/hostID/enable/post.json"
+				"$ref": "./paths/haproxy/proxy-hosts/hostID/enable/post.json"
 			}
 		},
-		"/nginx/proxy-hosts/{hostID}/disable": {
+		"/haproxy/proxy-hosts/{hostID}/disable": {
 			"post": {
-				"$ref": "./paths/nginx/proxy-hosts/hostID/disable/post.json"
+				"$ref": "./paths/haproxy/proxy-hosts/hostID/disable/post.json"
 			}
 		},
-		"/nginx/redirection-hosts": {
+		"/haproxy/redirection-hosts": {
 			"get": {
-				"$ref": "./paths/nginx/redirection-hosts/get.json"
+				"$ref": "./paths/haproxy/redirection-hosts/get.json"
 			},
 			"post": {
-				"$ref": "./paths/nginx/redirection-hosts/post.json"
+				"$ref": "./paths/haproxy/redirection-hosts/post.json"
 			}
 		},
-		"/nginx/redirection-hosts/{hostID}": {
+		"/haproxy/redirection-hosts/{hostID}": {
 			"get": {
-				"$ref": "./paths/nginx/redirection-hosts/hostID/get.json"
+				"$ref": "./paths/haproxy/redirection-hosts/hostID/get.json"
 			},
 			"put": {
-				"$ref": "./paths/nginx/redirection-hosts/hostID/put.json"
+				"$ref": "./paths/haproxy/redirection-hosts/hostID/put.json"
 			},
 			"delete": {
-				"$ref": "./paths/nginx/redirection-hosts/hostID/delete.json"
+				"$ref": "./paths/haproxy/redirection-hosts/hostID/delete.json"
 			}
 		},
-		"/nginx/redirection-hosts/{hostID}/enable": {
+		"/haproxy/redirection-hosts/{hostID}/enable": {
 			"post": {
-				"$ref": "./paths/nginx/redirection-hosts/hostID/enable/post.json"
+				"$ref": "./paths/haproxy/redirection-hosts/hostID/enable/post.json"
 			}
 		},
-		"/nginx/redirection-hosts/{hostID}/disable": {
+		"/haproxy/redirection-hosts/{hostID}/disable": {
 			"post": {
-				"$ref": "./paths/nginx/redirection-hosts/hostID/disable/post.json"
+				"$ref": "./paths/haproxy/redirection-hosts/hostID/disable/post.json"
 			}
 		},
-		"/nginx/dead-hosts": {
+		"/haproxy/dead-hosts": {
 			"get": {
-				"$ref": "./paths/nginx/dead-hosts/get.json"
+				"$ref": "./paths/haproxy/dead-hosts/get.json"
 			},
 			"post": {
-				"$ref": "./paths/nginx/dead-hosts/post.json"
+				"$ref": "./paths/haproxy/dead-hosts/post.json"
 			}
 		},
-		"/nginx/dead-hosts/{hostID}": {
+		"/haproxy/dead-hosts/{hostID}": {
 			"get": {
-				"$ref": "./paths/nginx/dead-hosts/hostID/get.json"
+				"$ref": "./paths/haproxy/dead-hosts/hostID/get.json"
 			},
 			"put": {
-				"$ref": "./paths/nginx/dead-hosts/hostID/put.json"
+				"$ref": "./paths/haproxy/dead-hosts/hostID/put.json"
 			},
 			"delete": {
-				"$ref": "./paths/nginx/dead-hosts/hostID/delete.json"
+				"$ref": "./paths/haproxy/dead-hosts/hostID/delete.json"
 			}
 		},
-		"/nginx/dead-hosts/{hostID}/enable": {
+		"/haproxy/dead-hosts/{hostID}/enable": {
 			"post": {
-				"$ref": "./paths/nginx/dead-hosts/hostID/enable/post.json"
+				"$ref": "./paths/haproxy/dead-hosts/hostID/enable/post.json"
 			}
 		},
-		"/nginx/dead-hosts/{hostID}/disable": {
+		"/haproxy/dead-hosts/{hostID}/disable": {
 			"post": {
-				"$ref": "./paths/nginx/dead-hosts/hostID/disable/post.json"
+				"$ref": "./paths/haproxy/dead-hosts/hostID/disable/post.json"
 			}
 		},
-		"/nginx/streams": {
+		"/haproxy/streams": {
 			"get": {
-				"$ref": "./paths/nginx/streams/get.json"
+				"$ref": "./paths/haproxy/streams/get.json"
 			},
 			"post": {
-				"$ref": "./paths/nginx/streams/post.json"
+				"$ref": "./paths/haproxy/streams/post.json"
 			}
 		},
-		"/nginx/streams/{streamID}": {
+		"/haproxy/streams/{streamID}": {
 			"get": {
-				"$ref": "./paths/nginx/streams/streamID/get.json"
+				"$ref": "./paths/haproxy/streams/streamID/get.json"
 			},
 			"put": {
-				"$ref": "./paths/nginx/streams/streamID/put.json"
+				"$ref": "./paths/haproxy/streams/streamID/put.json"
 			},
 			"delete": {
-				"$ref": "./paths/nginx/streams/streamID/delete.json"
+				"$ref": "./paths/haproxy/streams/streamID/delete.json"
 			}
 		},
-		"/nginx/streams/{streamID}/enable": {
+		"/haproxy/streams/{streamID}/enable": {
 			"post": {
-				"$ref": "./paths/nginx/streams/streamID/enable/post.json"
+				"$ref": "./paths/haproxy/streams/streamID/enable/post.json"
 			}
 		},
-		"/nginx/streams/{streamID}/disable": {
+		"/haproxy/streams/{streamID}/disable": {
 			"post": {
-				"$ref": "./paths/nginx/streams/streamID/disable/post.json"
+				"$ref": "./paths/haproxy/streams/streamID/disable/post.json"
 			}
 		},
 		"/reports/hosts": {

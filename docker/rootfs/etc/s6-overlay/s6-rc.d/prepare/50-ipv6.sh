@@ -2,24 +2,24 @@
 # shellcheck shell=bash
 
 # This command reads the `DISABLE_IPV6` env var and will either enable
-# or disable ipv6 in all nginx configs based on this setting.
+# or disable ipv6 in all configs based on this setting.
 
 set -e
 
 log_info 'IPv6 ...'
 
 process_folder () {
-	FILES=$(find "$1" -type f -name "*.conf")
+	FILES=$(find "$1" -type f -name "*.conf" -o -name "*.cfg")
 	SED_REGEX=
 
 	if [ "$(is_true "${DISABLE_IPV6:-}")" = '1' ]; then
 		# IPV6 is disabled
 		echo "Disabling IPV6 in hosts in: $1"
-		SED_REGEX='s/^([^#]*)listen \[::\]/\1#listen [::]/g'
+		SED_REGEX='s/^([^#]*)bind \[::\]/\1#bind [::]/g'
 	else
 		# IPV6 is enabled
 		echo "Enabling IPV6 in hosts in: $1"
-		SED_REGEX='s/^(\s*)#listen \[::\]/\1listen [::]/g'
+		SED_REGEX='s/^(\\s*)#bind \\[::\\]/\\1bind [::]/g'
 	fi
 
 	for FILE in $FILES
@@ -41,5 +41,5 @@ process_folder () {
 	chown -R "$PUID:$PGID" "$1"
 }
 
-process_folder /etc/nginx/conf.d
-process_folder /data/nginx
+process_folder /etc/haproxy/conf.d
+process_folder /data/haproxy

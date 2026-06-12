@@ -12,7 +12,7 @@ import {
 	HasPermission,
 	Loading,
 	LocationsFields,
-	NginxConfigField,
+	HaproxyConfigField,
 	SSLCertificateField,
 	SSLOptionsFields,
 } from "src/components";
@@ -343,7 +343,7 @@ const ProxyHostModal = EasyModal.create(({ id, visible, remove }: Props) => {
 												<SSLOptionsFields color="bg-lime" forProxyHost={true} />
 											</div>
 											<div className="tab-pane" id="tab-advanced" role="tabpanel">
-												<NginxConfigField />
+												<HaproxyConfigField />
 											</div>
 										</div>
 									</div>

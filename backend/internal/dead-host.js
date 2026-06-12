@@ -6,7 +6,7 @@ import deadHostModel from "../models/dead_host.js";
 import internalAuditLog from "./audit-log.js";
 import internalCertificate from "./certificate.js";
 import internalHost from "./host.js";
-import internalNginx from "./nginx.js";
+import internalHaproxy from "./haproxy.js";
 
 const omissions = () => {
 	return ["is_deleted"];
@@ -87,8 +87,8 @@ const internalDeadHost = {
 			throw new errs.InternalValidationError("The host was created but the Certificate creation failed.");
 		}
 
-		// Configure nginx
-		await internalNginx.configure(deadHostModel, "dead_host", freshRow);
+		// Configure HAProxy
+		await internalHaproxy.configure(deadHostModel, "dead_host", freshRow);
 
 		return freshRow;
 	},
@@ -174,8 +174,8 @@ const internalDeadHost = {
 				expand: ["owner", "certificate"],
 			});
 
-		// Configure nginx
-		const newMeta = await internalNginx.configure(deadHostModel, "dead_host", row);
+		// Configure HAProxy
+		const newMeta = await internalHaproxy.configure(deadHostModel, "dead_host", row);
 		row.meta = newMeta;
 		return _.omit(internalHost.cleanRowCertificateMeta(thisRow), omissions());
 	},
@@ -237,9 +237,9 @@ const internalDeadHost = {
 				is_deleted: 1,
 			});
 
-		// Delete Nginx Config
-		await internalNginx.deleteConfig("dead_host", row);
-		await internalNginx.reload();
+		// Delete HAProxy Config
+		await internalHaproxy.deleteConfig("dead_host", row);
+		await internalHaproxy.reload();
 
 		// Add to audit log
 		await internalAuditLog.add(access, {
@@ -280,8 +280,8 @@ const internalDeadHost = {
 				enabled: 1,
 			});
 
-		// Configure nginx
-		await internalNginx.configure(deadHostModel, "dead_host", row);
+		// Configure HAProxy
+		await internalHaproxy.configure(deadHostModel, "dead_host", row);
 
 		// Add to audit log
 		await internalAuditLog.add(access, {
@@ -319,9 +319,9 @@ const internalDeadHost = {
 				enabled: 0,
 			});
 
-		// Delete Nginx Config
-		await internalNginx.deleteConfig("dead_host", row);
-		await internalNginx.reload();
+		// Delete HAProxy Config
+		await internalHaproxy.deleteConfig("dead_host", row);
+		await internalHaproxy.reload();
 
 		// Add to audit log
 		await internalAuditLog.add(access, {

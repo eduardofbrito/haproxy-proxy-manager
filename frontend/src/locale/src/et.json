@@ -204,7 +204,7 @@
 		"defaultMessage": "This section requires some knowledge about Certbot and its DNS plugins. Please consult the respective plugins documentation."
 	},
 	"certificates.http.reachability-404": {
-		"defaultMessage": "There is a server found at this domain but it does not seem to be Nginx Proxy Manager. Please make sure your domain points to the IP where your NPM instance is running."
+		"defaultMessage": "There is a server found at this domain but it does not seem to be HAProxy Proxy Manager. Please make sure your domain points to the IP where your NPM instance is running."
 	},
 	"certificates.http.reachability-failed-to-check": {
 		"defaultMessage": "Failed to check the reachability due to a communication error with site24x7.com."
@@ -479,11 +479,11 @@
 	"login.title": {
 		"defaultMessage": "Login to your account"
 	},
-	"nginx-config.label": {
-		"defaultMessage": "Custom Nginx Configuration"
+	"haproxy-config.label": {
+		"defaultMessage": "Custom HAProxy Configuration"
 	},
-	"nginx-config.placeholder": {
-		"defaultMessage": "# Enter your custom Nginx configuration here at your own risk!"
+	"haproxy-config.placeholder": {
+		"defaultMessage": "# Enter your custom HAProxy configuration here at your own risk!"
 	},
 	"no-permission-error": {
 		"defaultMessage": "You do not have access to view this."
@@ -669,7 +669,7 @@
 		"defaultMessage": "Congratulations Page"
 	},
 	"settings.default-site.description": {
-		"defaultMessage": "What to show when Nginx is hit with an unknown Host"
+		"defaultMessage": "What to show when HAProxy is hit with an unknown Host"
 	},
 	"settings.default-site.html": {
 		"defaultMessage": "Custom HTML"

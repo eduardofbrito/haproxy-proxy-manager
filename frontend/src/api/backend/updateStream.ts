@@ -6,7 +6,7 @@ export async function updateStream(item: Stream): Promise<Stream> {
 	const { id, createdOn: _, modifiedOn: __, ...data } = item;
 
 	return await api.put({
-		url: `/nginx/streams/${id}`,
+		url: `/haproxy/streams/${id}`,
 		data: data,
 	});
 }

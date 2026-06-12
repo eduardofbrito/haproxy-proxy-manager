@@ -3,7 +3,7 @@ import type { RedirectionHost } from "./models";
 
 export async function createRedirectionHost(item: RedirectionHost): Promise<RedirectionHost> {
 	return await api.post({
-		url: "/nginx/redirection-hosts",
+		url: "/haproxy/redirection-hosts",
 		data: item,
 	});
 }

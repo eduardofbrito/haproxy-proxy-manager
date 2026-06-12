@@ -16,26 +16,20 @@ fi
 
 # Create required folders
 mkdir -p \
-	/data/nginx \
+	/data/haproxy \
 	/data/custom_ssl \
 	/data/logs \
 	/data/access \
-	/data/nginx/default_host \
-	/data/nginx/default_www \
-	/data/nginx/proxy_host \
-	/data/nginx/redirection_host \
-	/data/nginx/stream \
-	/data/nginx/dead_host \
-	/data/nginx/temp \
+	/data/haproxy/default_host \
+	/data/haproxy/default_www \
+	/data/haproxy/proxy_host \
+	/data/haproxy/redirection_host \
+	/data/haproxy/stream \
+	/data/haproxy/dead_host \
+	/data/haproxy/temp \
 	/data/letsencrypt-acme-challenge \
-	/run/nginx \
-	/tmp/nginx/body \
-	/var/log/nginx \
-	/var/lib/nginx/cache/public \
-	/var/lib/nginx/cache/private \
-	/var/cache/nginx/proxy_temp
+	/run/haproxy \
+	/etc/haproxy/errors
 
-touch /var/log/nginx/error.log || true
-chmod 777 /var/log/nginx/error.log || true
-chmod -R 777 /var/cache/nginx || true
-chmod 644 /etc/logrotate.d/nginx-proxy-manager
+touch /var/log/haproxy/error.log || true
+chmod 644 /etc/logrotate.d/haproxy-proxy-manager

@@ -132,7 +132,7 @@
 		"defaultMessage": "本节需要您具备一些关于 Certbot 及其 DNS 插件的知识，请参阅相应插件的官方文档。"
 	},
 	"certificates.http.reachability-404": {
-		"defaultMessage": "在此域名下找到了一个服务器，但它似乎不是 Nginx 代理管理器。请确保您的域名指向 NPM 实例运行的 IP 地址。"
+		"defaultMessage": "在此域名下找到了一个服务器，但它似乎不是 HAProxy 代理管理器。请确保您的域名指向 NPM 实例运行的 IP 地址。"
 	},
 	"certificates.http.reachability-failed-to-check": {
 		"defaultMessage": "由于与site24x7.com通信错误，无法检查可达性。"
@@ -392,11 +392,11 @@
 	"login.title": {
 		"defaultMessage": "登录您的账户"
 	},
-	"nginx-config.label": {
-		"defaultMessage": "自定义 Nginx 配置"
+	"haproxy-config.label": {
+		"defaultMessage": "自定义 HAProxy 配置"
 	},
-	"nginx-config.placeholder": {
-		"defaultMessage": "# 在此输入您的自定义 Nginx 配置，风险自负！"
+	"haproxy-config.placeholder": {
+		"defaultMessage": "# 在此输入您的自定义 HAProxy 配置，风险自负！"
 	},
 	"no-permission-error": {
 		"defaultMessage": "您无权查看此内容。"
@@ -564,7 +564,7 @@
 		"defaultMessage": "欢迎页面"
 	},
 	"settings.default-site.description": {
-		"defaultMessage": "当 Nginx 遇到未知主机时显示什么"
+		"defaultMessage": "当 HAProxy 遇到未知主机时显示什么"
 	},
 	"settings.default-site.html": {
 		"defaultMessage": "自定义 HTML"

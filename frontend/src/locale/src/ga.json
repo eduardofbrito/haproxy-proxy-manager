@@ -147,7 +147,7 @@
 		"defaultMessage": "Éilíonn an chuid seo roinnt eolais faoi Certbot agus a bhreiseáin DNS. Féach ar dhoiciméadacht na mbreiseán faoi seach, le do thoil."
 	},
 	"certificates.http.reachability-404": {
-		"defaultMessage": "Tá freastalaí aimsithe ag an bhfearann seo ach ní cosúil gur Bainisteoir Proxy Nginx atá ann. Déan cinnte go bhfuil do fhearann ag pointeáil chuig an seoladh IP ina bhfuil d'eispéireas NPM ag rith."
+		"defaultMessage": "Tá freastalaí aimsithe ag an bhfearann seo ach ní cosúil gur Bainisteoir Proxy HAProxy atá ann. Déan cinnte go bhfuil do fhearann ag pointeáil chuig an seoladh IP ina bhfuil d'eispéireas NPM ag rith."
 	},
 	"certificates.http.reachability-failed-to-check": {
 		"defaultMessage": "Theip ar sheiceáil an inrochtaineachta mar gheall ar earráid chumarsáide le site24x7.com."
@@ -389,11 +389,11 @@
 	"login.title": {
 		"defaultMessage": "Logáil isteach i do chuntas"
 	},
-	"nginx-config.label": {
-		"defaultMessage": "Cumraíocht Nginx Saincheaptha"
+	"haproxy-config.label": {
+		"defaultMessage": "Cumraíocht HAProxy Saincheaptha"
 	},
-	"nginx-config.placeholder": {
-		"defaultMessage": "# Cuir isteach do chumraíocht saincheaptha Nginx anseo ar do phriacal féin!"
+	"haproxy-config.placeholder": {
+		"defaultMessage": "# Cuir isteach do chumraíocht saincheaptha HAProxy anseo ar do phriacal féin!"
 	},
 	"no-permission-error": {
 		"defaultMessage": "Níl rochtain agat chun seo a fheiceáil."
@@ -579,7 +579,7 @@
 		"defaultMessage": "Leathanach Comhghairdeas"
 	},
 	"settings.default-site.description": {
-		"defaultMessage": "Cad atá le taispeáint nuair a bhuaileann óstach anaithnid Nginx"
+		"defaultMessage": "Cad atá le taispeáint nuair a bhuaileann óstach anaithnid HAProxy"
 	},
 	"settings.default-site.html": {
 		"defaultMessage": "HTML saincheaptha"
