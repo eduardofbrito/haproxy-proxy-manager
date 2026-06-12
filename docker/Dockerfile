@@ -3,7 +3,7 @@
 #
 # This file assumes that the frontend has been built using ./scripts/frontend-build
 
-ARG BASE_IMAGE=haproxy:3.0-alpine
+ARG BASE_IMAGE=node:20-alpine
 FROM haproxy/testca AS testca
 FROM $BASE_IMAGE
 
@@ -22,8 +22,7 @@ ENV SUPPRESS_NO_CONFIG_WARNING=1 \
 	NODE_ENV=production \
 	NPM_BUILD_VERSION="${BUILD_VERSION}" \
 	NPM_BUILD_COMMIT="${BUILD_COMMIT}" \
-	NPM_BUILD_DATE="${BUILD_DATE}" \
-	NODE_OPTIONS="--openssl-legacy-provider"
+	NPM_BUILD_DATE="${BUILD_DATE}"
 
 RUN apk add --no-cache \
 	bash curl ca-certificates jq logrotate \
@@ -45,7 +44,7 @@ WORKDIR /etc/ssl/certs
 RUN ln -s HaproxyProxyManager.crt 1d0e3f10.0 && update-ca-certificates
 
 WORKDIR /app
-RUN apk add --no-cache nodejs npm yarn \
+RUN apk add --no-cache yarn \
 	&& yarn install \
 	&& yarn cache clean
 
