@@ -98,11 +98,11 @@ const getLocale = (short = false) => {
 
 const cache = createIntlCache();
 
-const initialMessages = loadMessages(getLocale());
+const initialMessages = loadMessages(getLocale()) as Record<string, string>;
 let intl = createIntl({ locale: getLocale(), messages: initialMessages }, cache);
 
 const changeLocale = (locale: string): void => {
-  const messages = loadMessages(locale);
+  const messages = loadMessages(locale) as Record<string, string>;
   intl = createIntl({ locale, messages }, cache);
   window.localStorage.setItem("locale", locale);
   document.documentElement.lang = locale;
