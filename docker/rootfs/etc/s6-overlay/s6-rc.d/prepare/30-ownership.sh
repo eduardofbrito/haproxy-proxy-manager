@@ -5,7 +5,6 @@ set -e
 
 log_info 'Setting ownership ...'
 
-# root
 chown root /tmp/npm
 
 locations=(
@@ -23,7 +22,7 @@ chownit() {
 	local recursive="${2:-true}"
 
 	local have
-	have="$(stat -c '%u:%g' "$dir")"
+	have="$(stat -c '%u:%g' "$dir" 2>/dev/null)" || return 0
 	echo "- $dir ... "
 
 	if [ "$have" != "$PUID:$PGID" ]; then
@@ -42,15 +41,14 @@ for loc in "${locations[@]}"; do
 	chownit "$loc"
 done
 
-if [ "$(is_true "${SKIP_CERTBOT_OWNERSHIP:-}")" = '1' ]; then
-	log_info 'Skipping ownership change of certbot directories'
-else
-	log_info 'Changing ownership of certbot directories, this may take some time ...'
+# Handle certbot ownership (Alpine installs in /usr/bin, not /opt/certbot)
+if [ -d "/opt/certbot" ]; then
+	log_info 'Changing ownership of certbot /opt/certbot directories ...'
 	chownit "/opt/certbot" false
 	chownit "/opt/certbot/bin" false
-
-	# Handle all site-packages directories efficiently
-	find /opt/certbot/lib -type d -name "site-packages" | while read -r SITE_PACKAGES_DIR; do
-		chownit "$SITE_PACKAGES_DIR"
+	find /opt/certbot/lib -type d -name "site-packages" 2>/dev/null | while read -r sp; do
+		chownit "$sp"
 	done
+else
+	log_info 'certbot not in /opt/certbot, skipping'
 fi

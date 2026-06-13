@@ -29,7 +29,10 @@ mkdir -p \
 	/data/haproxy/temp \
 	/data/letsencrypt-acme-challenge \
 	/run/haproxy \
-	/etc/haproxy/errors
+	/etc/haproxy/errors \
+	/tmp/npm \
+	/tmp/npmuserhome \
+	/var/log/haproxy
 
-touch /var/log/haproxy/error.log || true
+touch /var/log/haproxy/error.log
 chmod 644 /etc/logrotate.d/haproxy-proxy-manager
