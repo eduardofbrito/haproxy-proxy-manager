@@ -62,9 +62,13 @@ app.use("/api", mainRoutes);
 const frontendPath = path.join(process.cwd(), "frontend");
 app.use(express.static(frontendPath));
 
-// Fallback: serve index.html for SPA routing
-app.get(/^.*$/, (_, res) => {
-	res.sendFile(path.join(frontendPath, "index.html"));
+// SPA fallback: if no static file matched, serve index.html
+app.use((req, res, next) => {
+	if (req.method === "GET") {
+		res.sendFile(path.join(frontendPath, "index.html"));
+	} else {
+		next();
+	}
 });
 
 // production error handler
