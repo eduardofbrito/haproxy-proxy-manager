@@ -15,7 +15,8 @@ if [ "${DEVELOPMENT:-}" = 'true' ]; then
 else
 	while :
 	do
-		s6-setuidgid "$PUID:$PGID" bash -c "export HOME=$NPMHOME;export CERTBOT_VERSION=$CERTBOT_VERSION;node --abort_on_uncaught_exception --max_old_space_size=250 index.js"
-		sleep 1
+		s6-setuidgid "$PUID:$PGID" bash -c "export HOME=$NPMHOME;export CERTBOT_VERSION=$CERTBOT_VERSION;node --max_old_space_size=250 index.js 2>&1 | tee -a /tmp/backend_stdout.log"
+		echo "RESTARTING at $(date)" >> /tmp/backend_stdout.log
+		sleep 2
 	done
 fi
