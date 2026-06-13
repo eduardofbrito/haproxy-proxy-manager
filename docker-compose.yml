@@ -1,0 +1,13 @@
+version: '3.9'
+
+services:
+  haproxy-proxy-manager:
+    image: eduardofbrito/haproxy-proxy-manager:latest
+    container_name: haproxy-proxy-manager
+    restart: always
+    network_mode: host
+    environment:
+      - TZ=America/Sao_Paulo
+    volumes:
+      - /opt/npm-data:/data
+      - /opt/npm-letsencrypt:/etc/letsencrypt
