@@ -2,6 +2,7 @@ import bodyParser from "body-parser";
 import compression from "compression";
 import express from "express";
 import fileUpload from "express-fileupload";
+import path from "path";
 import { isDebugMode } from "./lib/config.js";
 import cors from "./lib/express/cors.js";
 import jwt from "./lib/express/jwt.js";
@@ -55,7 +56,16 @@ app.use((_, res, next) => {
 });
 
 app.use(jwt());
-app.use("/", mainRoutes);
+app.use("/api", mainRoutes);
+
+// Serve frontend static files
+const frontendPath = path.join(process.cwd(), "frontend");
+app.use(express.static(frontendPath));
+
+// Fallback: serve index.html for SPA routing
+app.get("*", (_, res) => {
+	res.sendFile(path.join(frontendPath, "index.html"));
+});
 
 // production error handler
 // no stacktraces leaked to user
