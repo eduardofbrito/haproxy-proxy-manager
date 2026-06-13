@@ -184,8 +184,8 @@ export default function Login() {
 				<div className="d-flex justify-content-between align-items-center mb-4 ps-4 pe-3">
 					<img
 						className={styles.logo}
-						src="/images/logo-text-horizontal-grey.png"
-						alt="Nginx Proxy Manager"
+						src="/images/haproxy-logo-text-horizontal-grey.svg"
+						alt="HAProxy Proxy Manager"
 					/>
 					<div className="d-flex align-items-center gap-1">
 						<LocalePicker />
